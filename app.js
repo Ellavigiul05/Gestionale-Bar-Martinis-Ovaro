@@ -54,7 +54,6 @@ app.use(express.json());
 app.use("/pdf", express.static(path.join(__dirname, "public/pdf")));
 
 
-import cors from "cors";
 app.use(cors({
   origin: true,        
   credentials: true
