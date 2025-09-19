@@ -1,5 +1,4 @@
 import pg from "pg";
-
 import dotenv from "dotenv";
 
 dotenv.config();
@@ -7,27 +6,20 @@ dotenv.config();
 export async function database() {
   const { Client } = pg;
 
-  const db = new pg.Client({
-    connectionString: process.env.DATABASE_PUBLIC_URL,
+  const db = new Client({
+    connectionString: process.env.DATABASE_PUBLIC_URL, // la stringa completa di Railway
     ssl: {
-      rejectUnauthorized: false,
+      rejectUnauthorized: false, // necessario per Railway
     },
   });
 
-  db.connect()
-    .then(() => {
-      console.log("Connessione al database riuscita!");
-    })
-    .catch((err) => {
-      console.error("Errore nella connessione al database:", err);
-    });
-
   try {
-    await db.connect();
-    console.log("Connessiono al db riuscita");
+    await db.connect(); // connettiti solo una volta
+    console.log("Connessione al database riuscita!");
     return db;
   } catch (err) {
-    console.log("Errore di connessione al database");
+    console.error("Errore nella connessione al database:", err);
     process.exit(1);
   }
 }
+
