@@ -41,7 +41,9 @@ const __dirname = path.dirname(__filename);
 import fs, { appendFile } from "fs";
 
 const transporter = nodemailer.createTransport({
-  service: `gmail`,
+  host: "smtp.gmail.com",
+  port: 587, 
+  secure: false,
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
@@ -310,7 +312,7 @@ Router.post("/cambioPassword", async (req, res) => {
 
     let lavoratore = queryNuovaPasswordGmail.rows[0];
 
-let nuovaPasswordhtml = `
+    let nuovaPasswordhtml = `
   <div style="font-family: Arial, sans-serif; background-color: #FAF7F0; padding: 20px; color: #4A4947;">
     <div style="max-width: 600px; margin: auto; background-color: #FFFFFF; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
       
@@ -319,7 +321,9 @@ let nuovaPasswordhtml = `
       </div>
       
       <div style="padding: 30px;">
-        <h2 style="color: #B17457; margin-top: 0;">Ciao ${lavoratore.username},</h2>
+        <h2 style="color: #B17457; margin-top: 0;">Ciao ${
+          lavoratore.username
+        },</h2>
         <p style="line-height: 1.6; font-size: 15px;">
           Ti comunichiamo che la tua password è stata cambiata con successo. 
           La nuova password ti verrà consegnata direttamente dal direttore o da un membro dello staff.
@@ -340,7 +344,6 @@ let nuovaPasswordhtml = `
   </div>
 `;
 
-
     const workerMailChangePassword = {
       from: process.env.EMAIL_USER,
       to: lavoratore.email,
@@ -350,10 +353,7 @@ let nuovaPasswordhtml = `
 
     transporter.sendMail(workerMailChangePassword, (error, info) => {
       if (error) {
-        console.error(
-          "Errore nell'invio della mail al lavoratore",
-          error
-        );
+        console.error("Errore nell'invio della mail al lavoratore", error);
         return res
           .status(500)
           .json({ error: "Fallito l'invio della mail al lavoratore" });
@@ -776,8 +776,10 @@ Router.post("/letturaFile", upload.single("file"), async (req, res) => {
     let queryLavoratori = await db.query(
       "SELECT username, email FROM dati_accesso"
     );
-    const emailPromises = queryLavoratori.rows.filter((lavoratore)=>lavoratore.email).map((lavoratore) => {
-      const emailOrariHtml = `
+    const emailPromises = queryLavoratori.rows
+      .filter((lavoratore) => lavoratore.email)
+      .map((lavoratore) => {
+        const emailOrariHtml = `
   <div style="font-family: Arial, sans-serif; background-color: #FAF7F0; padding: 20px; color: #4A4947;">
     <div style="max-width: 600px; margin: auto; background-color: #FFFFFF; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
       
@@ -820,15 +822,15 @@ Router.post("/letturaFile", upload.single("file"), async (req, res) => {
   </div>
 `;
 
-      const workerMailOrarioOptions = {
-        from: process.env.EMAIL_USER,
-        to: lavoratore.email,
-        subject: `Usciti i turni di lavoro del prossimo mese`,
-        html: emailOrariHtml,
-      };
+        const workerMailOrarioOptions = {
+          from: process.env.EMAIL_USER,
+          to: lavoratore.email,
+          subject: `Usciti i turni di lavoro del prossimo mese`,
+          html: emailOrariHtml,
+        };
 
-      return sendMailAsync(workerMailOrarioOptions);
-    });
+        return sendMailAsync(workerMailOrarioOptions);
+      });
 
     await Promise.all(emailPromises);
 
