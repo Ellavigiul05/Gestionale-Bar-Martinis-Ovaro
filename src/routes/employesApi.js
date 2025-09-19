@@ -15,10 +15,12 @@ const workbook = new exceljs.Workbook();
 import nodemailer from "nodemailer";
 
 const transporter = nodemailer.createTransport({
-  service: `gmail`,
+  host: "in-v3.mailjet.com",
+  port: 587, 
+  secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.MAILJET_API_KEY,
+    pass: process.env.MAILJET_API_SECRET,
   },
 });
 
@@ -115,8 +117,10 @@ Router.post("/sendCommunication", async (req, res) => {
       "SELECT email, username FROM dati_accesso"
     );
 
-    const emailPromises = queryComunicazioneGmail.rows.filter((lavoratore)=>lavoratore.email).map((lavoratore) => {
-      const emailComunicazioniHtml = `
+    const emailPromises = queryComunicazioneGmail.rows
+      .filter((lavoratore) => lavoratore.email)
+      .map((lavoratore) => {
+        const emailComunicazioniHtml = `
   <div style="font-family: Arial, sans-serif; background-color: #FAF7F0; padding: 20px; color: #4A4947;">
     <div style="max-width: 600px; margin: auto; background-color: #FFFFFF; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
 
@@ -151,15 +155,15 @@ Router.post("/sendCommunication", async (req, res) => {
   </div>
 `;
 
-      const workerMailComunicazioniOptions = {
-        from: process.env.EMAIL_USER,
-        to: lavoratore.email,
-        subject: `Nuova comunicazione`,
-        html: emailComunicazioniHtml,
-      };
+        const workerMailComunicazioniOptions = {
+          from: process.env.EMAIL_USER,
+          to: lavoratore.email,
+          subject: `Nuova comunicazione`,
+          html: emailComunicazioniHtml,
+        };
 
-      return sendMailAsync(workerMailComunicazioniOptions);
-    });
+        return sendMailAsync(workerMailComunicazioniOptions);
+      });
 
     await Promise.all(emailPromises);
 

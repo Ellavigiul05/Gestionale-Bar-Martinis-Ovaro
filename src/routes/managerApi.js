@@ -41,13 +41,13 @@ const __dirname = path.dirname(__filename);
 import fs, { appendFile } from "fs";
 
 const transporter = nodemailer.createTransport({
-  host: "gmail",
+  host: "in-v3.mailjet.com",
+  port: 587, 
+  secure: false,
   auth: {
-    user: process.env.EMAIL_USER,
-    pass: process.env.EMAIL_PASS,
+    user: process.env.MAILJET_API_KEY,
+    pass: process.env.MAILJET_API_SECRET,
   },
-  logger: true,
-  debug: true,
 });
 
 function sendMailAsync(options) {
