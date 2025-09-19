@@ -1,0 +1,68 @@
+<%- include("../header.ejs") %>
+
+<main>
+    <div id="vacanze">
+        <div class="title">
+            <h2>Richiesta vacanze</h2>
+        </div>
+        <form action="">
+            <label for="">Seleziona periodo di inizio ferie</label>
+            <input type="date" name="inizio_vacanze" id="inizio_vacanze">
+
+            <label for="">Seleziona periodo di fine ferie</label>
+            <input type="date" name="fine_vacanze" id="fine_vacanze">
+
+            <button type="submit" id="invio-vacanze">Invia richiesta ferie</button>
+
+            <div id="errore-vacanze"></div>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Giorno_inizio</th>
+                    <th>Giorno_fine</th>
+                    <th>Status</th>
+                    <th>Elimina Richiesta</th>
+                </tr>
+            </thead>
+
+            <tbody id="tabella-ferie"></tbody>
+        </table>
+    </div>
+
+    <div id="giorniX">
+        <div class="title">
+            <h2>Richeista giorni inagibili</h2>
+        </div>
+
+        <form action="">
+            <label for="">Inserire giorno</label>
+            <input type="date" name="giorno" id="giorno">
+
+            <button id="giornoX-invio">Invia richiesta giorno a casa</button>
+
+            <div id="errore-giorno"></div>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Giorno</th>
+                    <th>Status</th>
+                    <th>Elimina Richiesta</th>
+                </tr>
+            </thead>
+
+            <tbody id="tabella-giorni-x"></tbody>
+        </table>
+    </div>
+</main>
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<%- include("../header.ejs") %>
+
+<main>
+    <h2>Orario del mese</h2>
+    <form action="">
+        <label for="">Inserisci mese</label>
+            <select name="mese" id="mese">
+            <option value="gennaio">Gennaio</option>
+            <option value="febbraio">Febbraio</option>
+            <option value="marzo">Marzo</option>
+            <option value="aprile">Aprile</option>
+            <option value="maggio">Maggio</option>
+            <option value="giugno">Giugno</option>
+            <option value="luglio">Luglio</option>
+            <option value="agosto">Agosto</option>
+            <option value="settembre">Settembre</option>
+            <option value="ottobre">Ottobre</option>
+            <option value="novembre">Novembre</option>
+            <option value="dicembre">Dicembre</option>
+        </select>
+    </form>
+    <div class="table-container">
+    <table>
+        <thead id="testa-tabella">
+            <tr>
+                <th>Giorno</th>
+                <th id="turno-1">6:00-13:00</th>
+                <th id="turno-2">9:00-15:00</th>
+                <th id="turno-3">14:30-chiusura</th>
+                <th id="turno-4">17:30-chiusura</th>
+            </tr>
+        </thead>
+
+        <tbody id="body-orario"></tbody>
+    </table>
+    </div>
+</main>
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

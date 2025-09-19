@@ -1,0 +1,116 @@
+<%- include("../headerM.ejs") %>
+
+<main>
+    <div id="formato">
+        <h2>Formato per compilazione turni mensili</h2>
+
+        <div id="form-cambio-orari">
+            <form action="">
+                <label for="turno1">Inserisci l'orario del turno 1(falcoltativo)</label>
+                <input type="text" name="turno-1" id="turno-1">
+
+                <label for="turno2">Inserisci l'orario del turno 2(falcoltativo)</label>
+                <input type="text" name="turno-2" id="turno-2">
+
+                <label for="turno3">Inserisci l'orario del turno 3(falcoltativo)</label>
+                <input type="text" name="turno-3" id="turno-3">
+
+                <label for="turno4">Inserisci l'orario del turno 4(falcoltativo)</label>
+                <input type="text" name="turno-4" id="turno-4">
+
+                <button id="nuovi-orari">Inserisci</button>
+
+                <div id="positiva-turni"></div>
+
+                <div id="errore-turni"></div>
+            </form>
+        </div>
+
+        <div id="form-mese-anno">
+            <form action="">
+                <label for="">Inserisci mese</label>
+                <select name="mese" id="mese">
+                <option value="gennaio">Gennaio</option>
+                <option value="febbraio">Febbraio</option>
+                <option value="marzo">Marzo</option>
+                <option value="aprile">Aprile</option>
+                <option value="maggio">Maggio</option>
+                <option value="giugno">Giugno</option>
+                <option value="luglio">Luglio</option>
+                <option value="agosto">Agosto</option>
+                <option value="settembre">Settembre</option>
+                <option value="ottobre">Ottobre</option>
+                <option value="novembre">Novembre</option>
+                <option value="dicembre">Dicembre</option>
+              </select>
+
+            </form>
+            <div id="errore-mese"></div>
+        </div>
+
+        <button id="btn-formato">Scarica formato</button>
+        <div class="errore"></div>
+    </div>
+
+    <div id="lettura">
+        <h2>Inserimento turni mensili</h2>
+
+        <form action="">
+            <label for="">Inserisci file dei turni mensili</label>
+            <input type="file" name="fileTurni" id="fileTurni">
+
+            <button id="btn-lettura">Inserisci turni mensili</button>
+        </form>
+        <div id="positiva-lettura"></div>
+        <div id="errore-lettura"></div>
+    </div>
+
+    <section id="visionegiorni">
+        <div class="title">
+            <h2>Giorni concessi</h2>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Giorno</th>
+                    </tr>
+                </thead>
+
+                <tbody id="body-giorni"></tbody>
+            </table>
+        </div>
+    </section>
+
+    <section id="visionevacanze">
+        <div class="title">
+            <h2>Vacanza concesse</h2>
+        </div>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Username</th>
+                        <th>Giorno Inizio</th>
+                        <th>Giorno Fine</th>
+                    </tr>
+                </thead>
+
+                <tbody id="body-vacanze-approvate"></tbody>
+            </table>
+        </div>
+    </section>
+
+</main>
+
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

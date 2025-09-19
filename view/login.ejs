@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <% if(Titolo) { %>
+    <title><%= Titolo %></title>
+    <% } %> <% if(cssFile) { %>
+    <link rel="stylesheet" href="<%= cssFile %>" />
+    <% } %>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <h1 id="title">Bar Martinis</h1>
+      </header>
+
+      <main>
+        <div id="login">
+          <div id="t-l"><h2>Login</h2></div>
+          <form action="">
+            <label for="username">Username:</label>
+            <input type="text" name="username" id="username" required />
+
+            <label for="password">Password:</label>
+            <input
+              type="password"
+              name="password"
+              id="password"
+              autocomplete="off"
+            />
+
+            <button type="submit" id="login-btn">Login</button>
+            <div id="error-container"></div>
+          </form>
+        </div>
+      </main>
+    </div>
+
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+    <% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+    <% } %>
+  </body>
+</html>

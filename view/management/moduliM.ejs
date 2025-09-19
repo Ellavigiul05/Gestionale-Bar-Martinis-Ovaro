@@ -1,0 +1,149 @@
+<%- include("../headerM.ejs") %>
+<main>
+    <section id="dati-trasporto">
+        <div class="title">
+            <h2>Dati Trasporto</h2>
+        </div>
+        <form action="">
+            <label for="">Seleziona mese</label>
+                <select name="mese" id="mese">
+                    <option value="gennaio">Gennaio</option>
+                    <option value="febbraio">febbrario</option>
+                    <option value="marzo">marzo</option>
+                    <option value="aprile">aprile</option>
+                    <option value="maggio">maggio</option>
+                    <option value="giugno">giugno</option>
+                    <option value="luglio">luglio</option>
+                    <option value="agosto">agosto</option>
+                    <option value="settembre">settembre</option>
+                    <option value="ottobre">ottobre</option>
+                    <option value="novembre">novembre</option>
+                    <option value="dicembre">dicembre</option>
+                </select>
+            <button id="seleziona-mese">Seleziona</button>
+            <div id="errore-mese-trasporti"></div>
+        </form>
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>data</th>
+                    <th>Fornitore</th>
+                    <th>Prodotto</th>
+                    <th>Conduzione Trasporto</th>
+                    <th>Integrità confezioni</th>
+                    <th>Etichettatura</th>
+                    <th>Verifica Infestanti</th>
+                    <th>Temperatura consegna</th>
+                    <th>Firma</th>
+                </tr>
+            </thead>
+
+            <tbody id="body-trasporti"></tbody>
+        </table>
+        </div>
+        <div class="btn-excel"><button id="ex-trasporti">Scarica Excel trasporti</button></div>
+    </section>
+
+    <section id="igiene-dati">
+        <div class="title">
+            <h2>Dati igiene</h2>
+        </div>
+
+        <form action="">
+            <label for="">Seleziona mese</label>
+                <select name="mese" id="mese-igiene">
+                    <option value="gennaio">Gennaio</option>
+                    <option value="febbraio">febbrario</option>
+                    <option value="marzo">marzo</option>
+                    <option value="aprile">aprile</option>
+                    <option value="maggio">maggio</option>
+                    <option value="giugno">giugno</option>
+                    <option value="luglio">luglio</option>
+                    <option value="agosto">agosto</option>
+                    <option value="settembre">settembre</option>
+                    <option value="ottobre">ottobre</option>
+                    <option value="novembre">novembre</option>
+                    <option value="dicembre">dicembre</option>
+                </select>
+            <button id="seleziona-igiene">Seleziona</button>
+            <div id="errore-mese-igiene"></div>
+        </form>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Giorno</th>
+                        <th>Controllo</th>
+                        <th>Igiene locale</th>
+                        <th>Igiene attrezzature</th>
+                        <th>Igiene personale</th>
+                        <th>Firma</th>
+                    </tr>
+                </thead>
+
+                <tbody id="body-igiene"></tbody>
+            </table>
+        </div>
+        <div class="btn-excel"><button id="ex-igiene">Scarica Excel Igiene</button></div>
+    </section>
+
+
+    <section id="dati-frighi">
+        <div class="title">
+            <h2>Dati temperature frighi</h2>
+        </div>
+
+        <form action="">
+            <label for="">Seleziona mese</label>
+                <select name="mese" id="mese-frigo">
+                    <option value="gennaio">Gennaio</option>
+                    <option value="febbraio">febbrario</option>
+                    <option value="marzo">marzo</option>
+                    <option value="aprile">aprile</option>
+                    <option value="maggio">maggio</option>
+                    <option value="giugno">giugno</option>
+                    <option value="luglio">luglio</option>
+                    <option value="agosto">agosto</option>
+                    <option value="settembre">settembre</option>
+                    <option value="ottobre">ottobre</option>
+                    <option value="novembre">novembre</option>
+                    <option value="dicembre">dicembre</option>
+                </select>
+            <button id="seleziona-frighi">Seleziona</button>
+            <div id="errore-mese-frighi"></div>
+        </form>
+
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Giorno</th>
+                        <th>Parte del giorno</th>
+                        <th>Frigo1</th>
+                        <th>Frigo2</th>
+                        <th>Frigo3</th>
+                        <th>Frigo Bar</th>
+                        <th>Frigo Gelati</th>
+                        <th>Frigo Vini</th>
+                        <th>Frigo Bibite</th>
+                        <th>Firma</th>
+                    </tr>
+                </thead>
+
+                <tbody id="body-frighi"></tbody>
+            </table>
+        </div>
+        <div class="btn-excel"><button id="ex-temperature">Scarica Excel Temperature frighi</button></div>
+    </section>
+</main>
+
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

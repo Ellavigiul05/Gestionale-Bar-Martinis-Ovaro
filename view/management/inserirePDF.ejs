@@ -1,0 +1,25 @@
+<%- include("../headerM.ejs") %>
+
+<main>
+    <section id="inserire">
+        <form action="">
+            <label for="">Inserisci menù(PDF)</label>
+            <input type="file" name="file" id="file">
+
+            <button id="invio-pdf">Inserisci pdf</button>
+
+            <div id="messaggio-positivo"></div>
+            <div id="errore-invio"></div>
+        </form>
+
+        <button id="dow-qr">Scarica codice QR</button>
+    </section>
+</main>
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

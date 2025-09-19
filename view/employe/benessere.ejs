@@ -1,0 +1,30 @@
+<%- include("../header.ejs") %>
+
+<main>
+    <section id="take-valori">
+        <div id="input">
+            <form action="http://localhost:3000/api/valoriumore" method="post">
+                <label for="valore">Inserisci valore del tuo umore oggi:</label>
+                <input type="number" name="umore" id="umore">
+
+                <button type="submit" id="btn-umore">Inserisci valori</button>
+                <div id="errore-valore"></div>
+            </form>
+        </div>
+    </section>
+
+<div id="chart-container">
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</main>
+
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

@@ -1,0 +1,170 @@
+html,
+body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #faf7f0;
+  color: #4a4947;
+  font-family: "Bebas Neue", sans-serif;
+  overflow-x: hidden;
+}
+
+html{
+  position: relative;
+}
+
+#container {
+  width: 100%;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 2rem 5%;
+  box-sizing: border-box;
+}
+
+#logout{
+  width: 20%;
+  margin: auto;
+}
+
+
+header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+#start h1 {
+  font-size: 2.5em;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+#start h2 {
+  font-size: 1.6em;
+  margin: 0.3em 0 0;
+  font-weight: normal;
+}
+
+
+#hidden-bar,
+.x, .toggle {
+  display: none;
+}
+
+#bar {
+  margin-top: 1rem;
+}
+
+#bar ul {
+  display: flex;
+  justify-content: center;
+  gap: 2rem;
+  list-style: none;
+  padding: 0;
+}
+
+#bar ul li a {
+  text-decoration: none;
+  color: #4a4947;
+  font-size: 1.1em;
+  letter-spacing: 1px;
+  transition: color 0.3s ease;
+}
+
+#bar ul li a:hover {
+  color: #b38b59;
+}
+
+.error {
+  text-align: center;
+  color: red;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+
+.positiva {
+  text-align: center;
+  color: green;
+  letter-spacing: 2px;
+  font-weight: 100;
+}
+
+@media screen and (max-width: 769px) {
+  #bar {
+    display: none;
+  }
+
+#hidden-bar { 
+  display: block;
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 1000;
+  background-color: #4a4947;
+  width: 50%;
+  height: 100%;
+  padding-top: 1rem;
+  box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+}
+
+
+.x {
+  width: 100%;
+  display: flex;
+  justify-content: center; 
+}
+
+.x i {
+  font-size: 1.8em;
+  color: #faf7f0;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.x i:hover {
+  color: #b38b59;
+}
+
+#hidden-bar ul {
+  margin: 2rem 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  align-items: flex-start;
+  padding-left: 2rem;
+}
+
+#hidden-bar ul li a {
+  text-decoration: none;
+  color: #faf7f0;
+  font-size: 1.3em;
+  letter-spacing: 1px;
+  transition: color 0.3s;
+}
+
+#hidden-bar ul li a:hover {
+  color: #b38b59;
+}
+
+
+  .toggle {
+    display: block;
+    width: 100%;
+    height: auto;
+    margin: auto;
+  }
+
+  .toggle {
+    font-size: 1.5em;
+    color: #4a4947;
+  }
+
+  #logout{
+  width: 50%;
+  margin: auto;
+}
+}

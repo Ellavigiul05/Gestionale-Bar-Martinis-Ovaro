@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <% if(Titolo) { %>
+    <title><%= Titolo %></title>
+    <% } %> <% if(cssFile) { %>
+    <link rel="stylesheet" href="/style/headerMStyle.css" />
+    <link rel="stylesheet" href="<%= cssFile %>" />
+    <% } %>
+
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"
+      rel="stylesheet"
+    />
+
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/exceljs/4.3.0/exceljs.min.js"
+      integrity="sha512-UnrKxsCMN9hFk7M56t4I4ckB4N/2HHi0w/7+B/1JsXIX3DmyBcsGpT3/BsuZMZf+6mAr0vP81syWtfynHJ69JA=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    ></script>
+  </head>
+  <body>
+    <div id="container">
+      <header>
+        <div id="start">
+          <h1>Bar Martinis</h1>
+          <h2>Ciao <%= username %></h2>
+          <div class="toggle">
+            <i class="fa-solid fa-bars" id="toggle-side"></i>
+          </div>
+        </div>
+
+        <form action="/logout" method="get">
+          <button type="submit" id="logut">Logout</button>
+        </form>
+
+        <div id="hidden-bar">
+          <div class="x">
+            <i class="fa-solid fa-x" id="delete-side"></i>
+          </div>
+          <ul type="none">
+            <li><a href="/turniM">Turni</a></li>
+            <li><a href="/personale">Personale</a></li>
+            <li><a href="/listaSpesaM">Lista Spesa</a></li>
+            <li><a href="/comunicazioniM">Comunicazioni</a></li>
+            <li><a href="/orarioM">Orario</a></li>
+            <li><a href="/richiesteM">Richieste</a></li>
+            <li><a href="/moduliM">Moduli</a></li>
+            <li><a href="/inserirePDF">Menù</a></li>
+          </ul>
+        </div>
+
+        <div id="bar">
+          <ul type="none">
+            <li><a href="/turniM">Turni</a></li>
+            <li><a href="/personale">Personale</a></li>
+            <li><a href="/listaSpesaM">Lista Spesa</a></li>
+            <li><a href="/comunicazioniM">Comunicazioni</a></li>
+            <li><a href="/orarioM">Orario</a></li>
+            <li><a href="/richiesteM">Richieste</a></li>
+            <li><a href="/moduliM">Moduli</a></li>
+            <li><a href="/InserirePDF">Menù</a></li>
+          </ul>
+        </div>
+      </header>
+    </div>
+  </body>
+</html>

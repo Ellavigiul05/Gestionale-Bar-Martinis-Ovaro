@@ -1,0 +1,139 @@
+<%- include("../headerM.ejs") %>
+
+<main>
+    <section id="lista">
+        <div id="caffetteria">
+            <h2 class="title-prodotti">Caffetteria</h2>
+          <div class="table-container">
+          <table>
+            <thead>
+                <tr>
+                    <th>Nome Prodotto</th>
+                    <th>Assenza</th>
+                    <th>note</th>
+                    <th>Utente</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-caffetteria"></tbody>
+          </table>
+          </div>
+            <div class="bottone">
+                <button id="btn-delete-table-caffetteria" class="btn-delete-all" data-value="caffetteria">Elimina Tabella</button>
+            </div>
+        </div>
+
+        <div id="friulbrau">
+            <h2 class="title-prodotti">Friulbrau</h2>
+          <div class="table-container">
+          <table>
+            <thead>
+                <tr>
+                    <th>Nome Prodotto</th>
+                    <th>Assenza</th>
+                    <th>note</th>
+                    <th>Utente</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-friulbrau"></tbody>
+          </table>
+          </div>
+            <div class="bottone">
+                <button id="btn-delete-table-friulbrau" class="btn-delete-all" data-value="friulbrau">Elimina Tabella</button>
+            </div>
+        </div>
+
+        <div id="cibo">
+            <h2 class="title-prodotti">Cibo</h2>
+          <div class="table-container">
+          <table>
+            <thead>
+                <tr>
+                    <th>Nome Prodotto</th>
+                    <th>Assenza</th>
+                    <th>note</th>
+                    <th>Utente</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-cibo"></tbody>
+          </table>
+          </div>
+            <div class="bottone">
+                <button id="btn-delete-table-cibo" class="btn-delete-all" data-value="cibo">Elimina Tabella</button>
+            </div>
+        </div>
+
+        <div id="publicart">
+            <h2 class="title-prodotti">Publicart</h2>
+          <div class="table-container">
+          <table>
+            <thead>
+                <tr>
+                    <th>Nome Prodotto</th>
+                    <th>Assenza</th>
+                    <th>note</th>
+                    <th>Utente</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-publicart"></tbody>
+          </table>
+          </div>
+            <div class="bottone">
+                <button id="btn-delete-table-publicart" class="btn-delete-all" data-value="publicart">Elimina Tabella</button>
+            </div>
+        </div>
+
+        <div id="pulizia">
+            <h2 class="title-prodotti">Pulizia</h2>
+          <div class="table-container"></div>
+          <table>
+            <thead>
+                <tr>
+                    <th>Nome Prodotto</th>
+                    <th>Assenza</th>
+                    <th>note</th>
+                    <th>Utente</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-pulizia"></tbody>
+          </table>
+          </div>
+            <div class="bottone">
+                <button id="btn-delete-table-pulizia" class="btn-delete-all" data-value="pulizia">Elimina Tabella</button>
+            </div>
+        </div>
+
+        <div id="altro">
+            <h2 class="title-prodotti">Altro</h2>
+          <div class="table-container">
+          <table>
+            <thead>
+                <tr>
+                    <th>Nome Prodotto</th>
+                    <th>Assenza</th>
+                    <th>note</th>
+                    <th>Utente</th>
+                </tr>
+            </thead>
+
+            <tbody id="table-altro"></tbody>
+          </table>
+          </div>
+            <div class="bottone">
+                <button id="btn-delete-table-altro" class="btn-delete-all" data-value="altro">Elimina Tabella</button>
+            </div>
+        </div>
+    </section>
+</main>
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

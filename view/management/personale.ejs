@@ -1,0 +1,58 @@
+<%- include("../headerM.ejs") %>
+
+<main>
+    <section id="in-personale">
+        <div id="form-personale">
+            <div class="title">
+                <h2>Inserimento personale</h2>
+            </div>
+            <form>
+                <label for="username">Inserire username lavoratore</label>
+                <input type="text" name="username" id="username">
+
+                <label for="password">Inserire la password</label>
+                <input type="text" name="password" id="password">
+
+                <label for="email">Inserire Email(facoltativo)</label>
+                <input type="email" name="email" id="email">
+
+                <label for="telefono">Inserire numero di cellulare(facoltativo)</label>
+                <input type="tel" name="telefono" id="telefono">
+
+                <button type="submit" id="new-employee">Crea nuovo dipendente</button>
+
+                <div id="errore-personale"></div>
+            </form>
+        </div>
+
+        <div id="visione-dipendenti">
+            <div class="title">
+                <h2>I tuoi dipendenti</h2>
+            </div>
+            <table>
+                <thead>
+                    <tr>
+                    <th>Username</th>
+                    <th>Cambio password</th>
+                    <th>Email</th>
+                    <th>Telefono</th>
+                    <th>Elimina lavoratore</th>
+                    </tr>
+                </thead>
+
+                <tbody id="employees">
+                </tbody>
+            </table>
+        </div>
+
+        
+    </section>
+</main>
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

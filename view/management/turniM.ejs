@@ -1,0 +1,57 @@
+<%- include("../headerM.ejs") %>
+
+<main>
+    <section id="tutti">
+        <div id="scelta">
+            <form action="">
+                <label for="lavoratore">Seleziona lavoratore</label>
+                <select name="lavoratore" id="lavoratore"></select>
+
+                <label for="mese">Seleziona mese</label>
+                <select name="mese" id="mese">
+                    <option value="gennaio">Gennaio</option>
+                    <option value="febbraio">febbrario</option>
+                    <option value="marzo">marzo</option>
+                    <option value="aprile">aprile</option>
+                    <option value="maggio">maggio</option>
+                    <option value="giugno">giugno</option>
+                    <option value="luglio">luglio</option>
+                    <option value="agosto">agosto</option>
+                    <option value="settembre">settembre</option>
+                    <option value="ottobre">ottobre</option>
+                    <option value="novembre">novembre</option>
+                    <option value="dicembre">dicembre</option>
+                </select>
+
+                <button type="submit" id="btn-dipendente">Seleziona</button>
+                <div id="errore-selezionare"></div>
+            </form>
+        </div>
+    </section>
+
+
+    <section id="visione">
+        <table>
+            <thead>
+                <tr>
+                    <th>Giorno</th>
+                    <th>Ora Inizio</th>
+                    <th>Ora Fine</th>
+                    <th>Ore totali</th>
+                </tr>
+            </thead>
+
+            <tbody id="orari-workers"></tbody>
+        </table>
+
+        <button id="btn-excel">Scarica Excel</button>
+    </section>
+</main>
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

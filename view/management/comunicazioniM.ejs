@@ -1,0 +1,35 @@
+<%- include("../headerM.ejs") %>
+<main>
+    <section id="in-comunicazioni">
+        <div id="input">
+            <form action="http://localhost:3000/api/sendCommunication" method="post">
+                <label for="comunicazione">Inserisci comunicazione</label>
+                <input type="text" name="comunicazione" id="comunicazione">
+
+                <button type="submit" id="btn-communication">Invia comunicazione</button>
+
+                <div id="comunicazione-errore"></div>
+            </form>
+        </div>
+    </section>
+
+    <section id="messaggi">
+        <div class="title-comunicazioni">
+            <h2>Comunicazioni importanti</h2>
+            <div id="error-container"></div>
+        </div>
+
+        <div id="contenuti-messaggi"></div>
+
+    </section>
+
+</main>
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>">
+    </script>
+<% } %>
+</body>
+</html>

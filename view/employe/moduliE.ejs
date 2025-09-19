@@ -1,0 +1,198 @@
+<%- include("../header.ejs") %>
+
+<main>
+    <section id="verifica-igienica">
+        <div class="title">
+            <h2>Verifica prassi igienica</h2>
+        </div>
+
+        <form action="">
+            <label for="">Seleziona giorno:</label>
+            <input type="date" name="giorno" id="giorno">
+
+            <label for="">Controllo</label>
+            <select name="controllo" id="controllo">
+                <option value="pre">Pre</option>
+                <option value="post">Post</option>
+            </select>
+
+            <label for="">Idoneità locale</label>
+            <select name="locale" id="locale">
+                <option value="Conforme">Conforme</option>
+                <option value="Non conforme">Non conforme</option>
+            </select>
+
+            <label for="">Idoneità igiene attrezzature</label>
+            <select name="attrezzature" id="attrezzature">
+                <option value="Conforme">Conforme</option>
+                <option value="Non conforme">Non conforme</option>
+            </select>
+
+            <label for="">Idoneità Igiene personale</label>
+            <select name="personale" id="personale">
+                <option value="Conforme">Conforme</option>
+                <option value="Non conforme">Non conforme</option>
+            </select>
+
+            <button id="btn-igiene">Invia</button>
+            <div id="errore-igiene"></div>
+        </form>
+
+        <form action="">
+            <label for="">Seleziona mese</label>
+                <select name="mese-igiene" id="mese-igiene">
+                    <option value="gennaio">Gennaio</option>
+                    <option value="febbraio">febbrario</option>
+                    <option value="marzo">marzo</option>
+                    <option value="aprile">aprile</option>
+                    <option value="maggio">maggio</option>
+                    <option value="giugno">giugno</option>
+                    <option value="luglio">luglio</option>
+                    <option value="agosto">agosto</option>
+                    <option value="settembre">settembre</option>
+                    <option value="ottobre">ottobre</option>
+                    <option value="novembre">novembre</option>
+                    <option value="dicembre">dicembre</option>
+                </select>
+
+                <button id="ex-igiene-btn">Scarica Excel Igiene</button>
+        </form>
+    </section>
+
+    <section id="materie-prime">
+        <div class="title">
+            <h2>Accettazione materie prime</h2>
+        </div>
+
+        <form action="">
+            <label for="">Inserire data:</label>
+            <input type="date" name="giorno-consegna" id="giorno-consegna">
+
+            <label for="">Inseire nome fornitore</label>
+            <input type="text" name="fornitore" id="fornitore">
+
+            <label for="">Inserire nome prodotto</label>
+            <input type="text" name="prodotto" id="prodotto">
+
+            <label for="">Condizione di trasporto</label>
+            <select name="condizione-trasporto" id="condizione-trasporto">
+                <option value="Conforme">Conforme</option>
+                <option value="Non conforme">Non conforme</option>
+            </select>
+
+            <label for="">Integrità confezioni</label>
+            <select name="integrita" id="integrita">
+                <option value="Conforme">Conforme</option>
+                <option value="Non conforme">Non conforme</option>
+            </select>
+
+            <label for="">Etichettatura</label>
+            <select name="etichettatura" id="etichettatura">
+                <option value="Conforme">Conforme</option>
+                <option value="Non conforme">Non conforme</option>
+            </select>
+
+            <label for="">Verifica infestanti</label>
+            <select name="infestanti" id="infestanti">
+                <option value="Conforme">Conforme</option>
+                <option value="Non conforme">Non conforme</option>
+            </select>
+
+            <label for="">Temperatura consegna</label>
+            <input type="number" id="temperatura" name="temperatura">
+
+            <button id="btn-trasporto">Invia</button>
+            <div id="errore-trasporto"></div>
+        </form>
+
+                <form action="">
+            <label for="">Seleziona mese</label>
+                <select name="mese-trasporti" id="mese-trasporti">
+                    <option value="gennaio">Gennaio</option>
+                    <option value="febbraio">febbrario</option>
+                    <option value="marzo">marzo</option>
+                    <option value="aprile">aprile</option>
+                    <option value="maggio">maggio</option>
+                    <option value="giugno">giugno</option>
+                    <option value="luglio">luglio</option>
+                    <option value="agosto">agosto</option>
+                    <option value="settembre">settembre</option>
+                    <option value="ottobre">ottobre</option>
+                    <option value="novembre">novembre</option>
+                    <option value="dicembre">dicembre</option>
+                </select>
+
+                <button id="ex-trasporti-btn">Scarica Excel Trasporti</button>
+        </form>
+    </section>
+
+
+    <section id="temperature">
+        <div class="title">
+            <h2>Temperature frighi</h2>
+        </div>
+
+        <form action="">
+            <label for="">Inserire Giorno</label>
+            <input type="date" name="giorno-frighi" id="giorno-frighi">
+
+            <label for="">Selezionare parte giornata</label>
+            <select name="parte" id="parte">
+                <option value="mattino">mattino</option>
+                <option value="pomeriggio">pomeriggio</option>
+            </select>
+
+            <label for="">Frigorifero N1</label>
+            <input type="number" id="n1" name="n1" step="0.1">
+
+            <label for="">Frigorifero N2</label>
+            <input type="number" id="n2" name="n2" step="0.1">
+
+            <label for="">Frigorifero N3</label>
+            <input type="number" id="n3" name="n3" step="0.1">
+
+            <label for="">Frigorifero Gelati</label>
+            <input type="number" id="gelati" name="gelati" step="0.1">
+
+            <label for="">Frigorifero Vini</label>
+            <input type="number" id="vini" name="vini" step="0.1">
+
+            <label for="">Frigorifero Bibite</label>
+            <input type="number" id="bibite" name="bibite" step="0.1">
+
+            <label for="">Frigorifero Bar</label>
+            <input type="number" id="bar-frigo" name="bar-frigo" step="0.1">
+
+            <button id="btn-temperature">Invia</button>
+            <div id="errore-temperature"></div>
+        </form>
+
+                <form action="">
+            <label for="">Seleziona mese</label>
+                <select name="mese-temperature" id="mese-temperature">
+                    <option value="gennaio">Gennaio</option>
+                    <option value="febbraio">febbrario</option>
+                    <option value="marzo">marzo</option>
+                    <option value="aprile">aprile</option>
+                    <option value="maggio">maggio</option>
+                    <option value="giugno">giugno</option>
+                    <option value="luglio">luglio</option>
+                    <option value="agosto">agosto</option>
+                    <option value="settembre">settembre</option>
+                    <option value="ottobre">ottobre</option>
+                    <option value="novembre">novembre</option>
+                    <option value="dicembre">dicembre</option>
+                </select>
+
+                <button id="ex-temperature-btn">Scarica Excel Temperature</button>
+        </form>
+    </section>
+</main>
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>

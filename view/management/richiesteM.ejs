@@ -1,0 +1,52 @@
+<%- include("../headerM.ejs") %>
+
+<main>
+    <section id="richieste">
+        <div class="title">
+            <h2>Richieste di giorni indisponibili</h2>
+        </div>
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Giorno</th>
+                    <th>Approvazione</th>
+                    <th>Negazione</th>
+                </tr>
+            </thead>
+
+            <tbody id="body-giorniX"></tbody>
+        </table>
+        </div>
+    </section>
+
+    <div id="richieste-vacanze">
+        <div class="title">
+            <h2>Richieste vacanze</h2>
+        </div>
+        <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Username</th>
+                    <th>Giorno di inizio</th>
+                    <th>Giorno di fine</th>
+                    <th>Approvazione</th>
+                    <th>Negazione</th>
+                </tr>
+            </thead>
+
+            <tbody id="body-vacanze"></tbody>
+        </table>
+        </div>
+    </div>
+</main>
+    <script>
+      const apiURL = "<%= apiURL %>";
+    </script>
+<% if(jsFile) { %>
+    <script src="<%=jsFile %>"></script>
+<% } %>
+</body>
+</html>
