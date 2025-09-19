@@ -34,7 +34,7 @@ async function fetchLogin(e) {
   try {
     //I call the api where i handler the user data
     const response = await fetch(
-      `${apiURL}/api/InserimentoDatiAccesso`,
+      `/api/InserimentoDatiAccesso`,
       {
         //I choose the method
         method: "POST",
