@@ -41,13 +41,13 @@ const __dirname = path.dirname(__filename);
 import fs, { appendFile } from "fs";
 
 const transporter = nodemailer.createTransport({
-  host: "smtp.gmail.com",
-  port: 587, 
-  secure: false,
+  host: "gmail",
   auth: {
     user: process.env.EMAIL_USER,
     pass: process.env.EMAIL_PASS,
   },
+  logger: true,
+  debug: true,
 });
 
 function sendMailAsync(options) {
