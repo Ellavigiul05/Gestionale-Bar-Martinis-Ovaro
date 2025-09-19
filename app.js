@@ -206,7 +206,7 @@ app.get("/richiesteE", requireAuth, async (req, res) => {
     );
     let username = query.rows[0].username;
     res.render("employe/richiesteE.ejs", {
-      cssFile: "style/employestyle/richiesteEStyle.css",
+      cssFile: "style/employestyle/richiesteEstyle.css",
       jsFile: "js/employe/richiesteE.js",
       Titolo: "Richieste",
       username: username,
