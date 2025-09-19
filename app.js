@@ -7,6 +7,9 @@ import session from "express-session";
 //I import dotenv to hidden some password
 import dotenv from "dotenv";
 
+import cors from "cors";
+
+
 dotenv.config();
 
 import { fileURLToPath } from "url";
@@ -49,6 +52,10 @@ app.set("views", path.join(__dirname, "view"));
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
 app.use("/pdf", express.static(path.join(__dirname, "public/pdf")));
+
+
+app.use(cors());
+
 
 const db = await database();
 
