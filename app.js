@@ -26,7 +26,7 @@ import apiManager from "./src/routes/managerApi.js";
 const app = express();
 
 //I define a port for the server
-const port = 3000;
+const port = process.env.PORT;
 
 app.use(
   session({
