@@ -7,7 +7,7 @@ import session from "express-session";
 //I import dotenv to hidden some password
 import dotenv from "dotenv";
 
-dotenv.config("./.env");
+dotenv.config();
 
 import { fileURLToPath } from "url";
 //I import db
@@ -26,7 +26,7 @@ import apiManager from "./src/routes/managerApi.js";
 const app = express();
 
 //I define a port for the server
-const port = process.env.PORT;
+const port = process.env.PORT || 3000;
 
 app.use(
   session({
