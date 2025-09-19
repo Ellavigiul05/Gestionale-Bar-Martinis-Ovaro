@@ -19,6 +19,9 @@ dotenv.config("./.env");
 
 import nodemailer from "nodemailer";
 
+import mailjetTransport from "nodemailer-mailjet-transport";
+
+
 //I create a folder for the excel's working hours
 const upload = multer({ dest: "uploads/" });
 
@@ -40,15 +43,14 @@ const __dirname = path.dirname(__filename);
 
 import fs, { appendFile } from "fs";
 
-const transporter = nodemailer.createTransport({
-  host: "in-v3.mailjet.com",
-  port: 587, 
-  secure: false,
-  auth: {
-    user: process.env.MAILJET_API_KEY,
-    pass: process.env.MAILJET_API_SECRET,
-  },
-});
+const transporter = nodemailer.createTransport(
+  mailjetTransport({
+    auth: {
+      apiKey: process.env.MAILJET_API_KEY,
+      apiSecret: process.env.MAILJET_API_SECRET,
+    },
+  })
+);
 
 function sendMailAsync(options) {
   return new Promise((resolve, reject) => {

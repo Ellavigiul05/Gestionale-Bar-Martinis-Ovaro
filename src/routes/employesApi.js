@@ -14,15 +14,18 @@ const workbook = new exceljs.Workbook();
 
 import nodemailer from "nodemailer";
 
-const transporter = nodemailer.createTransport({
-  host: "in-v3.mailjet.com",
-  port: 587, 
-  secure: false,
-  auth: {
-    user: process.env.MAILJET_API_KEY,
-    pass: process.env.MAILJET_API_SECRET,
-  },
-});
+import mailjetTransport from "nodemailer-mailjet-transport";
+
+
+
+const transporter = nodemailer.createTransport(
+  mailjetTransport({
+    auth: {
+      apiKey: process.env.MAILJET_API_KEY,
+      apiSecret: process.env.MAILJET_API_SECRET,
+    },
+  })
+);
 
 function sendMailAsync(options) {
   return new Promise((resolve, reject) => {
