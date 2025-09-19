@@ -2,24 +2,31 @@ import pg from "pg";
 
 import dotenv from "dotenv";
 
-dotenv.config("./.env");
+dotenv.config();
 
 export async function database() {
   const { Client } = pg;
 
-  const db = new Client({
-    host: process.env.DB_HOST,
-    port: process.env.DB_PORT,
-    user: process.env.DB_USER,
-    password: process.env.DB_PASSWORD,
-    database: process.env.DB_NAME,
+  const db = new pg.Client({
+    connectionString: process.env.DATABASE_PUBLIC_URL,
+    ssl: {
+      rejectUnauthorized: false,
+    },
   });
 
-  try{
+  db.connect()
+    .then(() => {
+      console.log("Connessione al database riuscita!");
+    })
+    .catch((err) => {
+      console.error("Errore nella connessione al database:", err);
+    });
+
+  try {
     await db.connect();
     console.log("Connessiono al db riuscita");
     return db;
-  } catch(err){
+  } catch (err) {
     console.log("Errore di connessione al database");
     process.exit(1);
   }
