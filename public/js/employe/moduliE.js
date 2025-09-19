@@ -51,7 +51,7 @@ async function InvioDatiIgiene(e) {
   };
 
   try {
-    let response = await fetch(`${apiURL}/api/invioDatiIgiene`, {
+    let response = await fetch(`/api/invioDatiIgiene`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(dati),
@@ -114,7 +114,7 @@ async function invioDatiTrasporto() {
   };
 
   try {
-    let response = await fetch(`${apiURL}/api/invioDatiTrasporto`, {
+    let response = await fetch(`/api/invioDatiTrasporto`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(dati),
@@ -171,7 +171,7 @@ async function invioDatiTemperature(e) {
 
   try {
     let response = await fetch(
-      `${apiURL}/api/invioDatiTemperature`,
+      `/api/invioDatiTemperature`,
       {
         method: "POST",
         headers: { "content-type": "application/json" },
@@ -219,7 +219,7 @@ document.getElementById("ex-trasporti-btn").addEventListener("click", (e) => {
     return mostraErrore(errore, "Selezionare un mese");
   }
 
-  window.location.href = `${apiURL}/api/excelTrasportiE?mese=${meseNum}`; 
+  window.location.href = `/api/excelTrasportiE?mese=${meseNum}`; 
 });
 
 
@@ -249,7 +249,7 @@ document.getElementById("ex-igiene-btn").addEventListener("click", (e)=>{
     return mostraErrore(errore, "Selezionare un mese");
   }
 
-  window.location.href = `${apiURL}/api/excelIgieneE?mese=${meseNum}`; 
+  window.location.href = `/api/excelIgieneE?mese=${meseNum}`; 
 });
 
 
@@ -278,5 +278,5 @@ document.getElementById("ex-igiene-btn").addEventListener("click", (e)=>{
     return mostraErrore(errore, "Selezionare un mese");
   }
 
-  window.location.href = `${apiURL}/api/excelTemperatureE?mese=${meseNum}`; 
+  window.location.href = `/api/excelTemperatureE?mese=${meseNum}`; 
 });

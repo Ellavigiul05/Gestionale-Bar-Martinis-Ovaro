@@ -63,7 +63,7 @@ async function fetchUmore(e) {
 
   try {
     //I made a fetch call to the API
-    let response = await fetch(`${apiURL}/api/valoriumore`, {
+    let response = await fetch(`/api/valoriumore`, {
       //With method post
       method: "POST",
       //With JSON language
@@ -101,7 +101,7 @@ buttonInvioValori.addEventListener("click", fetchUmore);
 async function graficoFelicita() {
   try {
     //I made fetch call to the API
-    let response = await fetch(`${apiURL}/api/writevaloriumore`, {
+    let response = await fetch(`/api/writevaloriumore`, {
       //I use metodh get
       method: "GET",
       //I request the id of the user

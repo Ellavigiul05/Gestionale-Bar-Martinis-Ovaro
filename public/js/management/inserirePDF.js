@@ -57,7 +57,7 @@ async function inserimentoFilePDF(e) {
 
     try{
         //I made an api request
-        let response = await fetch(`${apiURL}/api/invioPDF`, {
+        let response = await fetch(`/api/invioPDF`, {
             //With method post
             method: "POST",
             //I pass the file
@@ -89,7 +89,7 @@ document.getElementById("invio-pdf").addEventListener("click", inserimentoFilePD
 
 document.getElementById("dow-qr").addEventListener("click", async ()=>{
     try{
-        window.location.href=`${apiURL}/api/qrcode/download`
+        window.location.href=`/api/qrcode/download`
     }catch(err) {
         console.log("Errore nel download del codice qr")
     }

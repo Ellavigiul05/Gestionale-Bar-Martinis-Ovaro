@@ -62,7 +62,7 @@ async function newEmployees(e) {
 
     try{
         //I mada an api call
-        let response = await fetch(`${apiURL}/api/inserimentoPersonale`, {
+        let response = await fetch(`/api/inserimentoPersonale`, {
             //With method post
             method: "POST",
             //WIth json
@@ -102,7 +102,7 @@ async function mostraDipendenti() {
 
     try{
         //I made an api call
-        let response = await fetch(`${apiURL}/api/mostraDipendenti`);
+        let response = await fetch(`/api/mostraDipendenti`);
         //I take the selected rows
         let result = await response.json();
         //I select the tbody 
@@ -161,7 +161,7 @@ async function eliminaLavoratore(idBottone) {
 
     try{
         //I made an api call
-        let response = await fetch(`${apiURL}/api/eliminazioneLavoratore`, {
+        let response = await fetch(`/api/eliminazioneLavoratore`, {
             //With method post
             method: "POST",
             //With json
@@ -193,7 +193,7 @@ async function passareIdCambioPassword(idLavoratore) {
 
     try {
         //I made an api call
-      let response = await fetch(`${apiURL}/api/setLavoratore`, {
+      let response = await fetch(`/api/setLavoratore`, {
         //With method post
         method: "POST",
         //With json

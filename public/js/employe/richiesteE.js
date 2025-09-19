@@ -61,7 +61,7 @@ async function InvioFerie(e) {
 
     try{
       //I made a call to api
-        let response = await fetch(`${apiURL}/api/invioDateFerie`, {
+        let response = await fetch(`/api/invioDateFerie`, {
           //With method post
             method: "POST", 
             //with json
@@ -96,7 +96,7 @@ document.getElementById("invio-vacanze").addEventListener("click", InvioFerie);
 async function visioneFerie() {
   try {
     //I made a call to api
-    let response = await fetch(`${apiURL}/api/visioneFerie`, {
+    let response = await fetch(`/api/visioneFerie`, {
       //With method get
       method: "GET",
       //I will pass the user id
@@ -163,7 +163,7 @@ async function eliminazioneRichiesta(idRichiesta) {
 
   try{
     //I made a call to api
-    let response = await fetch(`${apiURL}/api/eliminazioneRichieste`, {
+    let response = await fetch(`/api/eliminazioneRichieste`, {
       //With method post
       method: "POST", 
       //With json
@@ -202,7 +202,7 @@ async function InserimentoGiornoX() {
 
 
   try{
-    let response = await fetch(`${apiURL}/api/richiestaGiornoX`, {
+    let response = await fetch(`/api/richiestaGiornoX`, {
       method:"POST", 
       headers: {"content-type" : "application/json"},
       body: JSON.stringify({giornoX: giornoXValue}),
@@ -226,7 +226,7 @@ document.getElementById("giornoX-invio").addEventListener("click", InserimentoGi
 
 async function vedereGiornoX() {
   try{
-      let response = await fetch(`${apiURL}/api/visioneGiorniX`, {
+      let response = await fetch(`/api/visioneGiorniX`, {
     method: "GET", 
     credentials: "include",
   });
@@ -287,7 +287,7 @@ async function eliminazioneGiornoX(idGiornoX) {
   }
 
   try{
-    let response = await fetch(`${apiURL}/api/eliminazioneGiorniX`, {
+    let response = await fetch(`/api/eliminazioneGiorniX`, {
       method: "POST", 
       headers: {"content-type" : "application/json"},
       body: JSON.stringify({idGiornoX}),

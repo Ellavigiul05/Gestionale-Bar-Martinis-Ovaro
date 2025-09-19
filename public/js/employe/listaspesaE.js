@@ -77,7 +77,7 @@ async function inserimentoProdotti(e) {
   try {
     //I made fetch call to the API
     let response = await fetch(
-      `${apiURL}/api/inserimentoProdotti`,
+      `/api/inserimentoProdotti`,
       {
         //with method post
         method: "POST",
@@ -125,7 +125,7 @@ buttonInserimentoItem.addEventListener("click", inserimentoProdotti);
 async function visioneLista() {
   try {
     //I made a fetch call to the API
-    let response = await fetch(`${apiURL}/api/ricezioneListaSpesa`);
+    let response = await fetch(`/api/ricezioneListaSpesa`);
     //I take the api's data
     let result = await response.json();
     //I create an object to associate each table to his selection
@@ -221,7 +221,7 @@ async function eliminaProdotti(idProdottoSelezionato) {
   try {
     //I made a fetch call
     let response = await fetch(
-      `${apiURL}/api/eliminazioneProdotto`,
+      `/api/eliminazioneProdotto`,
       {
         //With method post
         method: "POST",
@@ -256,7 +256,7 @@ async function modificaAssenza(idRiga, newAssenza) {
   try {
     //I made a call to api
     let response = await fetch(
-      `${apiURL}/api/modificaAssenzaProdotto`,
+      `/api/modificaAssenzaProdotto`,
       {
         //With method post
         method: "POST",

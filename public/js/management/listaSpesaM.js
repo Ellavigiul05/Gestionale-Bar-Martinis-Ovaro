@@ -45,7 +45,7 @@ function mostraRispostaPositiva(divPositivo, message) {
 async function visioneLista() {
   try {
     //I made a fetch call to the API
-    let response = await fetch(`${apiURL}/api/ricezioneListaSpesa`);
+    let response = await fetch(`/api/ricezioneListaSpesa`);
     //I take the api's data
     let result = await response.json();
     //I create an object to associate each table to his selection
@@ -131,7 +131,7 @@ async function EliminaContenutiTabella(categoria) {
 
     try{
       //I made an api call
-        let response = await fetch(`${apiURL}/api/eliminazioneProdottiTotale`, {
+        let response = await fetch(`/api/eliminazioneProdottiTotale`, {
           //With method post
             method:"POST",
             //With json

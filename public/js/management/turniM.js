@@ -54,7 +54,7 @@ function differenzaOre(inizio, fine) {
 async function NomiLavoratori() {
   try {
     //I made an api call
-    let response = await fetch(`${apiURL}/api/seeWorkers`);
+    let response = await fetch(`/api/seeWorkers`);
     //I take the selected rows 
     let result = await response.json();
     //I take the field where will be display the workers
@@ -102,7 +102,7 @@ async function vedereDatiLavoratore(idLavoratore, mese) {
   try {
     //i made an api call where i pass the query of the id
     let response = await fetch(
-      `${apiURL}/api/guardaTurni?idLavoratore=${idLavoratore}`
+      `/api/guardaTurni?idLavoratore=${idLavoratore}`
     );
     //If is ok 
     if (response.ok) {
@@ -172,6 +172,6 @@ btnExcel.addEventListener("click", (e) => {
     return mostraErrore(errore, "Selezionare lavoratore e mese");
   }
 
-  window.location.href = `${apiURL}/api/creazioneFile?idLavoratore=${idLavoratore}&mese=${mese}`;
+  window.location.href = `/api/creazioneFile?idLavoratore=${idLavoratore}&mese=${mese}`;
 });
 

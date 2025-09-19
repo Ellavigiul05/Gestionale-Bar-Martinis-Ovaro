@@ -63,7 +63,7 @@ async function parametriTurni(e) {
 
   try {
     //I made a api call
-    let response = await fetch(`${apiURL}/api/inserimentoOrari`, {
+    let response = await fetch(`/api/inserimentoOrari`, {
       //With method post
       method: "POST",
       //With json
@@ -106,7 +106,7 @@ btnFormato.addEventListener("click", (e) => {
     return mostraErrore(errore,"Ritorna un mese prima di caricare il formato");
   }
   //i pass the month information in a query
-  window.location.href = `${apiURL}/api/creaFormato?mese=${meseValue}`;
+  window.location.href = `/api/creaFormato?mese=${meseValue}`;
 });
 
 
@@ -124,7 +124,7 @@ async function InserimentoFile(e) {
 
   try {
     //I call the pai
-    let response = await fetch(`${apiURL}/api/letturaFile`, {
+    let response = await fetch(`/api/letturaFile`, {
       //With method post
       method: "POST",
       //I pass the file
@@ -158,7 +158,7 @@ async function visioneGiorniApprovati() {
 
   try{
     //I made a call to the api
-    let response = await fetch(`${apiURL}/api/visioneApprovatiGiorni`);
+    let response = await fetch(`/api/visioneApprovatiGiorni`);
     //I take the data
     let result = await response.json();
     //I select the tbody to append the rows
@@ -191,7 +191,7 @@ visioneGiorniApprovati();
 async function visioneVacanzeApprovate() {
 
   try{
-    let response = await fetch(`${apiURL}/api/visioneApprovatiVacanze`);
+    let response = await fetch(`/api/visioneApprovatiVacanze`);
     let result = await response.json();
 
     let bodyTabellaApprovateVacanze = document.getElementById("body-vacanze-approvate");

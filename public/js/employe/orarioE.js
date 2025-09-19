@@ -22,7 +22,7 @@ document.getElementById("mese").addEventListener("change", () => {
 //I create a function to see the table 
 async function VedereTabella(mese) {
   try {
-    let response = await fetch(`${apiURL}/api/ottieniOrari?mese=${mese}`);
+    let response = await fetch(`/api/ottieniOrari?mese=${mese}`);
     let result = await response.json();
 
     let corpoTabella = document.getElementById("body-orario");

@@ -43,7 +43,7 @@ async function invioComunicazioni(e) {
 
   try {
     //I call the api
-    let response = await fetch(`${apiUrl}/api/sendCommunication`, {
+    let response = await fetch(`/api/sendCommunication`, {
       //I use method post
       method: "POST",
       //In json 
@@ -79,7 +79,7 @@ buttonSendCommunication.addEventListener("click", invioComunicazioni);
 async function visioneComunicazioni() {
   try {
     //i call the api
-    let response = await fetch(`${apiUrl}/api/getcommunication`);
+    let response = await fetch(`/api/getcommunication`);
     //i take the data
     let result = await response.json();
     //I select the field where there are the messages
@@ -155,7 +155,7 @@ async function deleteCommunication(idMessaggio) {
   try {
     //I made a call to the api
     let response = await fetch(
-      `${apiURL}/api/eliminazioneComunicazione`,
+      `/api/eliminazioneComunicazione`,
       {
         //With method post
         method: "POST",

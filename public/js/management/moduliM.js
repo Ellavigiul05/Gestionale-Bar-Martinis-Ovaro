@@ -63,7 +63,7 @@ async function letturaDatiTrasporto(e) {
 
   try {
     let response = await fetch(
-      `${apiURL}/api/visualizzaDatiTrasporto?mese=${meseNum}`,
+      `/api/visualizzaDatiTrasporto?mese=${meseNum}`,
       {
         method: "GET",
       }
@@ -126,7 +126,7 @@ document.getElementById("ex-trasporti").addEventListener("click", () => {
     return mostraErrore(errore, "Selezionare un mese");
   }
 
-  window.location.href = `${apiURL}/api/excelTrasporti?mese=${meseNum}`; 
+  window.location.href = `/api/excelTrasporti?mese=${meseNum}`; 
 });
 
 async function letturaDatiIgiene(e) {
@@ -157,7 +157,7 @@ async function letturaDatiIgiene(e) {
 
   try {
     let response = await fetch(
-      `${apiURL}/api/visualizzaDatiIgiene?mese=${meseNum}`,
+      `/api/visualizzaDatiIgiene?mese=${meseNum}`,
       {
         method: "GET",
       }
@@ -218,7 +218,7 @@ document.getElementById("ex-igiene").addEventListener("click", ()=>{
     return mostraErrore(errore, "Selezionare un mese");
   }
 
-  window.location.href = `${apiURL}/api/excelIgiene?mese=${meseNum}`; 
+  window.location.href = `/api/excelIgiene?mese=${meseNum}`; 
 })
 
 async function letturaDatiTemperature(e) {
@@ -249,7 +249,7 @@ async function letturaDatiTemperature(e) {
 
   try {
     let response = await fetch(
-      `${apiURL}/api/visualizzaDatiTemperature?mese=${meseNum}`,
+      `/api/visualizzaDatiTemperature?mese=${meseNum}`,
       {
         method: "GET",
       }
@@ -314,5 +314,5 @@ document
     return mostraErrore(errore, "Selezionare un mese");
   }
 
-  window.location.href = `${apiURL}/api/excelTemperature?mese=${meseNum}`; 
+  window.location.href = `/api/excelTemperature?mese=${meseNum}`; 
 });

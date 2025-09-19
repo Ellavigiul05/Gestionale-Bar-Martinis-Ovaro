@@ -86,7 +86,7 @@ async function fetchTurniIn(e) {
   try {
     //I made a fetch request to the API, i send data with:
     let response = await fetch(
-      `${apiURL}/api/inserimentoInizioTurno`,
+      `/api/inserimentoInizioTurno`,
       {
         //With method post
         method: "POST",
@@ -140,7 +140,7 @@ async function fetchTurniOff(e) {
   try {
     //I made a fetch call to my api with
     const response = await fetch(
-      `${apiURL}/api/inserimentoFineTurno`,
+      `/api/inserimentoFineTurno`,
       {
         //Method post
         method: "POST",
@@ -188,7 +188,7 @@ selectMese.addEventListener("change", mostraTurni);
 async function mostraTurni() {
   try {
     //I made a call to the api
-    let response = await fetch(`${apiURL}/api/visioneTurni`, {
+    let response = await fetch(`/api/visioneTurni`, {
       //With method get
       method: "GET",
       //I will user the user id
@@ -263,7 +263,7 @@ async function eliminazioneTurni(idTurno) {
 
   try{
     //I made a call to the api
-    let response = await fetch(`${apiURL}/api/eliminazioneTurni`, {
+    let response = await fetch(`/api/eliminazioneTurni`, {
       //With method post
       method: "POST", 
       //With json
@@ -292,5 +292,5 @@ btnExcel.addEventListener("click", () => {
   let errore = document.getElementById("errore-mese");
   if(!mese) return mostraErrore(errore, "Selezionare mese");
 
-  window.location.href = `${apiURL}/api/fileemploye?mese=${mese}`;
+  window.location.href = `/api/fileemploye?mese=${mese}`;
 });

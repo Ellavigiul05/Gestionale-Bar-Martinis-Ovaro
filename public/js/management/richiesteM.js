@@ -17,7 +17,7 @@ async function VisioneRichiesteGiorni() {
   try {
     //I made an api call
     let response = await fetch(
-      `${apiURL}/api/visioneRichiesteGiorni`
+      `/api/visioneRichiesteGiorni`
     );
     //I take the selected rows
     let result = await response.json();
@@ -90,7 +90,7 @@ async function invioStatusGiorno(valoreStatusGiorni, idRichiestaGiorno) {
 
   try {
     //I made an api call
-    let response = await fetch(`${apiURL}/api/invioStatusGiorno`, {
+    let response = await fetch(`/api/invioStatusGiorno`, {
       //With method post
       method: "POST",
       //With json
@@ -115,7 +115,7 @@ async function invioStatusGiorno(valoreStatusGiorni, idRichiestaGiorno) {
 //The same think for the holidays
 async function visioneVacanze() {
   try {
-    let response = await fetch(`${apiURL}/api/visioneVacanze`);
+    let response = await fetch(`/api/visioneVacanze`);
     let result = await response.json();
 
     const bodyVacanze = document.getElementById("body-vacanze");
@@ -186,7 +186,7 @@ async function invioStatuVacanze(valoreStatusVacanze, idRichiestaVacanza) {
   };
 
   try {
-    let response = await fetch(`${apiURL}/api/invioStatusVacanze`, {
+    let response = await fetch(`/api/invioStatusVacanze`, {
       method: "POST",
       headers: { "content-type": "application/json" },
       body: JSON.stringify(dati),

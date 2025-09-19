@@ -41,7 +41,7 @@ async function InserisciRisposta(e) {
   }
 
   try {
-    let response = await fetch(`${apiURL}/api/verificaRisposta`, {
+    let response = await fetch(`/api/verificaRisposta`, {
         method: "POST", 
         headers: {"content-type" : "application/json"},
         body: JSON.stringify({risposta: rispostaValue})
@@ -82,7 +82,7 @@ async function CambioDellaPassword(e) {
 
   try {
     //I made an api call
-    const response = await fetch(`${apiURL}/api/cambioPassword`, {
+    const response = await fetch(`/api/cambioPassword`, {
       //With method post
       method: "POST",
       //With json
