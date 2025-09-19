@@ -59,7 +59,7 @@ async function invioComunicazioni(e) {
       //i clean the field
       comunicazioneE.value = "";
       //I reload the page to update visual data
-      window.location.href = "/comunicazioni";
+      window.location.reload();
     } else {
       //I give an error if is needed
       let errore = document.getElementById("errore-comunicazione");
