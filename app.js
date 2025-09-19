@@ -54,7 +54,12 @@ app.use(express.json());
 app.use("/pdf", express.static(path.join(__dirname, "public/pdf")));
 
 
-app.use(cors());
+app.use(cors({
+  origin: "https://gestionale-bar-martinis-ovaro-production.up.railway.app",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true 
+}));
+
 
 
 const db = await database();
