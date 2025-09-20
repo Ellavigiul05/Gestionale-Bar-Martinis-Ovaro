@@ -48,7 +48,7 @@
         max-width: 1000px;
         width: 100%;
         margin: auto;
-        padding: 20px;
+        padding-bottom: 20px;
         background: #fff;
         border-radius: 12px;
         box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
@@ -147,7 +147,7 @@
       </p>
     </section>
     <script>
-      if (/Mobi|Android/i.test(navigator.userAgent)) {
+      if (/Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent)) {
         document.getElementById("pdfFrame").style.display = "none";
       } else {
         document.getElementById("pdfLink").style.display = "none";
