@@ -27,8 +27,7 @@ function mostraErrore(divErrore, message) {
 
 
 //I create a function to send communication
-async function invioComunicazioni(e) {
-  e.preventDefault();
+async function invioComunicazioni() {
   // I select the communication field
   let comunicazioneE = document.getElementById("comunicazione");
   //I take the communication value
@@ -70,10 +69,9 @@ async function invioComunicazioni(e) {
   }
 }
 
-//I select the button to send data
-const buttonSendCommunication = document.getElementById("btn-communication");
-//i send data with a click using the previous function
-buttonSendCommunication.addEventListener("click", invioComunicazioni);
+const form = document.getElementById("comunicazioniForm");
+form.addEventListener("submit", invioComunicazioni);
+
 
 //I create a function to see the communication
 async function visioneComunicazioni() {
