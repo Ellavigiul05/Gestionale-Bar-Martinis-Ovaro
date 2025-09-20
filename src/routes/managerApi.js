@@ -91,6 +91,11 @@ Router.post("/inserimentoPersonale", async (req, res) => {
       [username]
     );
 
+    res.status(200).json({
+      success: true,
+      message: "Utente creato ed email inviata con successo",
+    });
+
     const nuovoLavoratore = querySaluto.rows[0];
 
     const workerBenvenutoHtml = `
@@ -164,10 +169,6 @@ Router.post("/inserimentoPersonale", async (req, res) => {
       }
 
       console.log("Email inviata al lavoratore", info.response);
-      res.status(200).json({
-        success: true,
-        message: "Utente creato ed email inviata con successo",
-      });
     });
   } catch (err) {
     res
@@ -316,6 +317,11 @@ Router.post("/cambioPassword", async (req, res) => {
       [idLavoratore]
     );
 
+    res.status(200).json({
+      success: true,
+      message: "Password cambiata ed email inviata con successo",
+    });
+
     let lavoratore = queryNuovaPasswordGmail.rows[0];
 
     let nuovaPasswordhtml = `
@@ -366,10 +372,6 @@ Router.post("/cambioPassword", async (req, res) => {
       }
 
       console.log("Email inviata al lavoratore", info.response);
-      res.status(200).json({
-        success: true,
-        message: "Password cambiata ed email inviata con successo",
-      });
     });
 
     res
@@ -782,6 +784,11 @@ Router.post("/letturaFile", upload.single("file"), async (req, res) => {
     let queryLavoratori = await db.query(
       "SELECT username, email FROM dati_accesso"
     );
+
+    res.status(200).json({
+      success: true,
+      message: "Turni inseriti correttamente ed email inviate con successo",
+    });
     const emailPromises = queryLavoratori.rows
       .filter((lavoratore) => lavoratore.email)
       .map((lavoratore) => {
@@ -839,11 +846,6 @@ Router.post("/letturaFile", upload.single("file"), async (req, res) => {
       });
 
     await Promise.all(emailPromises);
-
-    res.status(200).json({
-      success: true,
-      message: "Turni inseriti correttamente ed email inviate con successo",
-    });
   } catch (err) {
     console.error("Errore backend:", err);
     res
@@ -903,6 +905,11 @@ Router.post("/invioStatusGiorno", async (req, res) => {
       [idRichiestaGiorno]
     );
 
+    res.status(200).json({
+      success: true,
+      message: "Risposta inviata con successo",
+    });
+
     let lavoratore = queryEmailRispostaGiorni.rows[0];
 
     let RispostaGiornoHtml = `
@@ -961,10 +968,6 @@ Router.post("/invioStatusGiorno", async (req, res) => {
       }
 
       console.log("Email inviata al lavoratore", info.response);
-      res.status(200).json({
-        success: true,
-        message: "Risposta inviata con successo",
-      });
     });
   } catch (err) {
     res
@@ -1021,6 +1024,11 @@ Router.post("/invioStatusVacanze", async (req, res) => {
       "SELECT v.status, v.giorno_inizio, v.giorno_fine, u.username, u.email FROM vacanze v JOIN dati_accesso u ON v.lavoratore_id = u.id WHERE v.id = $1",
       [idRichiestaVacanza]
     );
+
+    res.status(200).json({
+      success: true,
+      message: "Risposta inviata con successo",
+    });
 
     const lavoratore = queryEmailRisposta.rows[0];
 
@@ -1083,10 +1091,6 @@ Router.post("/invioStatusVacanze", async (req, res) => {
       }
 
       console.log("Email inviata al lavoratore", info.response);
-      res.status(200).json({
-        success: true,
-        message: "Risposta inviata con successo",
-      });
     });
   } catch (err) {
     res

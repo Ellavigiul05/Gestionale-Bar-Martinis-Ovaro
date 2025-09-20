@@ -16,8 +16,6 @@ import nodemailer from "nodemailer";
 
 import mailjetTransport from "nodemailer-mailjet-transport";
 
-
-
 const transporter = nodemailer.createTransport(
   mailjetTransport({
     auth: {
@@ -630,6 +628,11 @@ Router.post("/invioDateFerie", async (req, res) => {
       [giornoInizio, giornoFine, statusAttesa, id]
     );
 
+    res.status(200).json({
+      success: true,
+      message: "Richiesta inviata al dirigente con successo",
+    });
+
     let ugoVacanzeRichiesteHtml = `
   <div style="font-family: Arial, sans-serif; background-color: #FAF7F0; padding: 20px; color: #4A4947;">
     <div style="max-width: 600px; margin: auto; background-color: #FFFFFF; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
@@ -679,10 +682,6 @@ Router.post("/invioDateFerie", async (req, res) => {
       }
 
       console.log("Email inviata al dirigente", info.response);
-      res.status(200).json({
-        success: true,
-        message: "Richiesta inviata al dirigente con successo",
-      });
     });
   } catch (err) {
     res
@@ -789,6 +788,11 @@ Router.post("/richiestaGiornoX", async (req, res) => {
       [giornoX, status, id]
     );
 
+    res.status(200).json({
+      success: true,
+      message: "Richiesta inviata al dirigente con successo",
+    });
+
     let ugoGiorniXRichiesteHtml = `
   <div style="font-family: Arial, sans-serif; background-color: #FAF7F0; padding: 20px; color: #4A4947;">
     <div style="max-width: 600px; margin: auto; background-color: #FFFFFF; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
@@ -838,10 +842,6 @@ Router.post("/richiestaGiornoX", async (req, res) => {
       }
 
       console.log("Email inviata al dirigente", info.response);
-      res.status(200).json({
-        success: true,
-        message: "Richiesta inviata al dirigente con successo",
-      });
     });
   } catch (err) {
     console.log("Problema di invio richiesta per il giorno libero", err);
