@@ -1196,7 +1196,7 @@ Router.post("/invioPDF", pdfCartel.single("file"), async (req, res) => {
 //I create a route to download the image of the qr code
 Router.get("/qrcode/download", async (req, res) => {
   try {
-    const url = "/menu";
+    const url = "https://www.barmartinis.com//menu";
     const qrBuffer = await QRCode.toBuffer(url);
 
     res.setHeader("Content-Disposition", "attachment; filename=menu-qr.png");
