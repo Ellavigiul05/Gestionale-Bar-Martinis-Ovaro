@@ -21,7 +21,6 @@ import nodemailer from "nodemailer";
 
 import mailjetTransport from "nodemailer-mailjet-transport";
 
-
 //I create a folder for the excel's working hours
 const upload = multer({ dest: "uploads/" });
 
@@ -147,6 +146,11 @@ Router.post("/inserimentoPersonale", async (req, res) => {
       subject: `Grazie per esserti unito/a al nostro team`,
       html: workerBenvenutoHtml,
     };
+
+    transporter.verify((error, success) => {
+      if (error) console.log("Transporter non funziona:", error);
+      else console.log("Transporter pronto per inviare mail");
+    });
 
     transporter.sendMail(workerMailOptions, (error, info) => {
       if (error) {
