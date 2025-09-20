@@ -27,7 +27,8 @@ function mostraErrore(divErrore, message) {
 
 
 //I create a function to send communication
-async function invioComunicazioni() {
+async function invioComunicazioni(e) {
+  e.preventDefault();
   // I select the communication field
   let comunicazioneE = document.getElementById("comunicazione");
   //I take the communication value
@@ -58,7 +59,7 @@ async function invioComunicazioni() {
       //i clean the field
       comunicazioneE.value = "";
       //I reload the page to update visual data
-      window.location.reload();
+      window.location.href="/comunicazioni";
     } else {
       //I give an error if is needed
       let errore = document.getElementById("errore-comunicazione");
