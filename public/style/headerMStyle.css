@@ -102,7 +102,7 @@ header {
     top: 0;
     z-index: 1000;
     background-color: #4a4947;
-    width: 50%;
+    width: 70%;
     height: 100%;
     padding-top: 1rem;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.3);
@@ -161,7 +161,7 @@ header {
   }
 
   #logout {
-    width: 50%;
+    width: 70%;
     margin: auto;
   }
 }
