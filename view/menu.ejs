@@ -89,7 +89,6 @@
         background-color: #b38b59;
       }
 
-
       @media (max-width: 768px) {
         #start h1 {
           font-size: 2em;
@@ -108,7 +107,7 @@
         }
 
         iframe {
-          height: 400px; 
+          height: 400px;
         }
       }
 
@@ -126,7 +125,7 @@
         }
 
         iframe {
-          height: 300px; 
+          height: 300px;
         }
 
         a {
@@ -142,9 +141,17 @@
   <body>
     <section>
       <h2>Menù</h2>
-      <iframe src="<%= pdfUrl %>"></iframe>
-      <p><a href="<%= pdfUrl %>" target="_blank">Apri PDF</a></p>
+      <iframe src="<%= pdfUrl %>?v=<%= Date.now() %>"></iframe>
+      <p>
+        <a href="<%= pdfUrl %>?v=<%= Date.now() %>" target="_blank">Apri PDF</a>
+      </p>
     </section>
+    <script>
+      if (/Mobi|Android/i.test(navigator.userAgent)) {
+        document.getElementById("pdfFrame").style.display = "none";
+      } else {
+        document.getElementById("pdfLink").style.display = "none";
+      }
+    </script>
   </body>
 </html>
-
