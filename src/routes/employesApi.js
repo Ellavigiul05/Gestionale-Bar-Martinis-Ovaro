@@ -138,7 +138,7 @@ Router.post("/sendCommunication", async (req, res) => {
         </p>
 
         <div style="text-align: center; margin-top: 30px;">
-          <a href="#" 
+          <a href="https://www.barmartinis.com/" 
              style="background-color: #B17457; color: #FAF7F0; text-decoration: none; 
                     padding: 14px 28px; border-radius: 8px; font-weight: bold; 
                     display: inline-block; font-size: 15px;">
@@ -648,7 +648,7 @@ Router.post("/invioDateFerie", async (req, res) => {
         </p>
 
         <div style="text-align: center; margin-top: 30px;">
-          <a href="#" 
+          <a href="https://www.barmartinis.com/" 
              style="background-color: #B17457; color: #FAF7F0; text-decoration: none; 
                     padding: 14px 28px; border-radius: 8px; font-weight: bold; 
                     display: inline-block; font-size: 15px;">
@@ -808,7 +808,7 @@ Router.post("/richiestaGiornoX", async (req, res) => {
         </p>
 
         <div style="text-align: center; margin-top: 30px;">
-          <a href="#" 
+          <a href="https://www.barmartinis.com/" 
              style="background-color: #B17457; color: #FAF7F0; text-decoration: none; 
                     padding: 14px 28px; border-radius: 8px; font-weight: bold; 
                     display: inline-block; font-size: 15px;">

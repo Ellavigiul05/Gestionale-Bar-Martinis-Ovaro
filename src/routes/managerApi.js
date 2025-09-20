@@ -131,7 +131,7 @@ Router.post("/inserimentoPersonale", async (req, res) => {
 
         <!-- Call to action (facoltativa) -->
         <div style="text-align: center; margin-top: 30px;">
-          <a href="www.barmartinis.it" style="background-color: #B17457; color: #FAF7F0; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; display: inline-block;">
+          <a href="https://www.barmartinis.com/" style="background-color: #B17457; color: #FAF7F0; text-decoration: none; padding: 12px 24px; border-radius: 8px; font-weight: bold; display: inline-block;">
             Inizia con noi
           </a>
         </div>
@@ -818,7 +818,7 @@ Router.post("/letturaFile", upload.single("file"), async (req, res) => {
 
 
         <div style="text-align: center; margin-top: 30px;">
-          <a href="#" 
+          <a href="https://www.barmartinis.com/" 
              style="background-color: #B17457; color: #FAF7F0; text-decoration: none; 
                     padding: 14px 28px; border-radius: 8px; font-weight: bold; 
                     display: inline-block; font-size: 15px;">
@@ -1196,7 +1196,7 @@ Router.post("/invioPDF", pdfCartel.single("file"), async (req, res) => {
 //I create a route to download the image of the qr code
 Router.get("/qrcode/download", async (req, res) => {
   try {
-    const url = "http://localhost:3000/menu";
+    const url = "/menu";
     const qrBuffer = await QRCode.toBuffer(url);
 
     res.setHeader("Content-Disposition", "attachment; filename=menu-qr.png");
