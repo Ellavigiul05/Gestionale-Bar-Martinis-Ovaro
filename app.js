@@ -422,7 +422,7 @@ app.get("/moduliM", requireAuth, async (req, res) => {
 
 
 app.get("/menu", (req, res) => {
-  res.render("menu.ejs", { pdfUrl: "/pdf/menu.pdf" });
+  res.redirect("/pdf/menu.pdf");
 });
 
 //I use the function listen to try the server
