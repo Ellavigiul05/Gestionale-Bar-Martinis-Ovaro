@@ -114,62 +114,8 @@ Router.post("/sendCommunication", async (req, res) => {
       [messaggio, id]
     );
 
-    let queryComunicazioneGmail = await db.query(
-      "SELECT email, username FROM dati_accesso"
-    );
-
-    const emailPromises = queryComunicazioneGmail.rows
-      .filter((lavoratore) => lavoratore.email)
-      .map((lavoratore) => {
-        const emailComunicazioniHtml = `
-  <div style="font-family: Arial, sans-serif; background-color: #FAF7F0; padding: 20px; color: #4A4947;">
-    <div style="max-width: 600px; margin: auto; background-color: #FFFFFF; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.05); overflow: hidden;">
-
-      <div style="background-color: #B17457; padding: 20px; text-align: center; color: #FAF7F0;">
-        <h1 style="margin: 0; font-size: 22px;">Nuova Comunicazione</h1>
-      </div>
-
-      <div style="padding: 30px;">
-        <h2 style="color: #B17457; margin-top: 0;">Ciao ${
-          lavoratore.username
-        },</h2>
-        <p style="line-height: 1.6; font-size: 15px;">
-          Ti invitiamo a visualizzare la nuova comunicazione presente nella piattaforma.
-        </p>
-
-        <div style="text-align: center; margin-top: 30px;">
-          <a href="https://www.barmartinis.com/" 
-             style="background-color: #B17457; color: #FAF7F0; text-decoration: none; 
-                    padding: 14px 28px; border-radius: 8px; font-weight: bold; 
-                    display: inline-block; font-size: 15px;">
-            Visualizza comunicazione
-          </a>
-        </div>
-      </div>
-
-      <div style="background-color: #FAF7F0; padding: 15px; text-align: center; font-size: 12px; color: #4A4947;">
-        © ${new Date().getFullYear()} Bar Martinis · Ovaro<br>
-        Questo messaggio è generato automaticamente, non rispondere a questa email.
-      </div>
-
-    </div>
-  </div>
-`;
-
-        const workerMailComunicazioniOptions = {
-          from: process.env.EMAIL_USER,
-          to: lavoratore.email,
-          subject: `Nuova comunicazione`,
-          html: emailComunicazioniHtml,
-        };
-
-        return sendMailAsync(workerMailComunicazioniOptions);
-      });
-
-    await Promise.all(emailPromises);
-
     res.status(200).json({
-      message: "Comunicazione inviata correttamente e messaggio inviato",
+      message: "Comunicazione inviata correttamente",
     });
     console.log(query.rows);
   } catch (err) {
