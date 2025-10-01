@@ -759,11 +759,12 @@ Router.post("/letturaFile", upload.single("file"), async (req, res) => {
       //I take the row where i will take the data
       const row = foglio.getRow(rowNumber);
       //I obtain each value of the day, turno1, turno2, turno3, turno4
-      const giorno = row.getCell(1).value;
-      const turno1 = row.getCell(2).value;
-      const turno2 = row.getCell(3).value;
-      const turno3 = row.getCell(4).value;
-      const turno4 = row.getCell(5).value;
+      const giorno = row.getCell(1).value ?? "";
+      const turno1 = row.getCell(2).value ?? "";
+      const turno2 = row.getCell(3).value ?? "";
+      const turno3 = row.getCell(4).value ?? "";
+      const turno4 = row.getCell(5).value ?? "";
+
 
       //I insert into the shift's table and i insert everything in the array
       const result = await db.query(
