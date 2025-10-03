@@ -536,6 +536,7 @@ Router.get("/creazioneFile", async (req, res) => {
     await workbook.xlsx.write(res);
     res.end();
   } catch (err) {
+    console.error(err); 
     res
       .status(500)
       .json({ message: "problemi per l'invio dei dati al file excel" });
