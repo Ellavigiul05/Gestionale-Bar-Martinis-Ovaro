@@ -29,8 +29,6 @@ const pdfCartel = multer({ dest: "pdfFolder/" });
 const Router = express.Router();
 //I create the db instance
 const db = await database();
-//I create a new excel page
-const workbook = new exceljs.Workbook();
 
 import path from "path";
 
@@ -451,8 +449,11 @@ Router.get("/creazioneFile", async (req, res) => {
     );
 
     let nomeLavoratore = nome.rows[0].username;
+
+    const workbookT = new exceljs.Workbook();
+    
     //I create a sheet of excel called "turni"
-    const sheet = workbook.addWorksheet("Turni");
+    const sheet = workbookT.addWorksheet("Turni");
     // I set sheet columns of the table
     sheet.columns = [
       { header: "Giorno", key: "giorno" },
@@ -533,13 +534,13 @@ Router.get("/creazioneFile", async (req, res) => {
     );
     res.setHeader("Content-Disposition", "attachment; filename=turni.xlsx");
 
-    await workbook.xlsx.write(res);
+    await workbookT.xlsx.write(res);
     res.end();
   } catch (err) {
     console.error(err); 
     res
       .status(500)
-      .json({ message: "problemi per l'invio dei dati al file excel" });
+      .json({ message: "problemi per l'invio dei dati al file excel", err });
   }
 });
 
