@@ -3,23 +3,28 @@ import dotenv from "dotenv";
 
 dotenv.config();
 
+const { Pool } = pg;
+
+const pool = new Pool({
+  connectionString: process.env.DATABASE_PUBLIC_URL,
+  ssl: {
+    rejectUnauthorized: false,
+  },
+  keepAlive: true,
+});
+
 export async function database() {
-  const { Client } = pg;
-
-  const db = new Client({
-    connectionString: process.env.DATABASE_PUBLIC_URL, // la stringa completa di Railway
-    ssl: {
-      rejectUnauthorized: false, // necessario per Railway
-    },
-  });
-
   try {
-    await db.connect(); // connettiti solo una volta
+    const client = await pool.connect();
     console.log("Connessione al database riuscita!");
-    return db;
+    return client;
   } catch (err) {
     console.error("Errore nella connessione al database:", err);
     process.exit(1);
   }
 }
+
+
+export default pool;
+
 
