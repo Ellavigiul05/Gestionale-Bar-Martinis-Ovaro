@@ -60,8 +60,8 @@ app.use(cors({
 }));
 
 
+const db = pool;
 
-const db = await database();
 
 app.use("/api", apiLoginRouter);
 
