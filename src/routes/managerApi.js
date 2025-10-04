@@ -3,7 +3,7 @@ import express from "express";
 //I import hashPassword as function from my file /function.js to create an hashpassword
 import { hashPassword } from "./function.js";
 //I import the database to do the querys
-import { database } from "../config/db.js";
+import pool from "../config/db.js"; 
 //I import the differenzaOre's function from my file /function.js to made a subtraction between to time data
 import { differenzaOre } from "./function.js";
 //I import exceljs as npm packge to write and read excel files
@@ -28,7 +28,7 @@ const pdfCartel = multer({ dest: "pdfFolder/" });
 //I configured a Router link to express
 const Router = express.Router();
 //I create the db instance
-const db = await database();
+const db = pool;
 
 import path from "path";
 

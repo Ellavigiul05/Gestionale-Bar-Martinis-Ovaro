@@ -1,6 +1,6 @@
 import express from "express";
 
-import { database } from "../config/db.js";
+import pool from "../config/db.js"; 
 
 import bcrypt from "bcrypt";
 
@@ -9,7 +9,7 @@ import bcrypt from "bcrypt";
 
 const Router = express.Router();
 
-const db = await database();
+const db = pool;
 
 
 //I create the route to check the username and password for the login 

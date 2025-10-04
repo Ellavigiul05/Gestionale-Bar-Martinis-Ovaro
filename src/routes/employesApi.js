@@ -2,13 +2,13 @@ import express from "express";
 
 import exceljs from "exceljs";
 
-import { database } from "../config/db.js";
+import pool from "../config/db.js"; 
 
 import { differenzaOre } from "./function.js";
 
 const Router = express.Router();
 
-const db = await database();
+const db = pool;
 
 const workbook = new exceljs.Workbook();
 
