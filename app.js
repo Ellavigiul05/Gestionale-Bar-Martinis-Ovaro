@@ -14,7 +14,8 @@ dotenv.config();
 
 import { fileURLToPath } from "url";
 //I import db
-import { pool } from "./src/config/db.js";
+import pool from "./src/config/db.js"; 
+
 
 import { requireAuth } from "./src/routes/function.js";
 
