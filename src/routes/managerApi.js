@@ -1183,7 +1183,7 @@ Router.post("/invioPDF", pdfCartel.single("file"), async (req, res) => {
 
   try {
     //Them i select the path where i want to see the pdf
-    const uploadPath = path.resolve("public/pdf/menu.pdf");
+    const uploadPath = path.resolve("public/pdf/nmenu.pdf");
 
     fs.mkdirSync(path.dirname(uploadPath), { recursive: true });
     //i send the pdf to the correct path
