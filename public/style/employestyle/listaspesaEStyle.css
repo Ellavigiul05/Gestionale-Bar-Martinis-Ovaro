@@ -79,7 +79,7 @@ button:hover {
   overflow-x: auto;
 }
 
-#caffetteria, #friulbrau, #cibo, #publicart, #pulizia, #altro{
+#caffetteria, #friulbrau, #cibo, #pasticceria, #pulizia, #altro{
   width: 100%;
   height: auto;
   display: flex;
@@ -142,11 +142,11 @@ tbody tr:nth-child(even) {
   color: #ffffff;
 }
 
-#publicart table {
+#pasticceria table {
   border: 1px solid #d9d9d9;
   background-color: #f3f7ff;
 }
-#publicart th {
+#pasticceria th {
   background-color: #1a4fa3;
   color: #ffffff;
 }

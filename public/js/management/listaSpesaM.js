@@ -53,7 +53,7 @@ async function visioneLista() {
       caffetteria: document.getElementById("table-caffetteria"),
       friulbrau: document.getElementById("table-friulbrau"),
       cibo: document.getElementById("table-cibo"),
-      publicart: document.getElementById("table-publicart"),
+      pasticceria: document.getElementById("table-pasticceria"),
       pulizia: document.getElementById("table-pulizia"),
       altro: document.getElementById("table-altro"),
     };
@@ -91,7 +91,7 @@ async function visioneLista() {
 
     });
 
-    let bodys = ["table-caffetteria","table-friulbrau", "table-cibo", "table-publicart", "table-pulizia", "table-altro"];
+    let bodys = ["table-caffetteria","table-friulbrau", "table-cibo", "table-pasticceria", "table-pulizia", "table-altro"];
     //If the products in a table are 0 i won't show the delete button
     bodys.forEach(id=>{
         let tabella = document.getElementById(id);

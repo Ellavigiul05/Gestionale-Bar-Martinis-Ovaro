@@ -133,7 +133,7 @@ async function visioneLista() {
       caffetteria: document.getElementById("table-caffetteria"),
       friulbrau: document.getElementById("table-friulbrau"),
       cibo: document.getElementById("table-cibo"),
-      publicart: document.getElementById("table-publicart"),
+      pasticceria: document.getElementById("table-pasticceria"),
       pulizia: document.getElementById("table-pulizia"),
       altro: document.getElementById("table-altro"),
     };
