@@ -808,7 +808,7 @@ Router.post("/letturaFile", upload.single("file"), async (req, res) => {
           lavoratore.username
         },</h2>
         <p style="line-height: 1.6; font-size: 15px;">
-          Ti informiamo che sono stati pubblicati i <strong>nuovi turni di lavoro del prossimo mese</strong>.
+          Ti informiamo che sono stati pubblicati i <strong>nuovi turni di lavoro del prossimo mese o sono stati aggiornati quelli del mese attuale</strong>.
           Ti invitiamo a consultarli direttamente dalla nostra piattaforma.
         </p>
 
