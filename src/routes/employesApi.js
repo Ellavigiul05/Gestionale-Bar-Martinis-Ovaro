@@ -114,6 +114,10 @@ Router.post("/sendCommunication", async (req, res) => {
       [messaggio, id]
     );
 
+    res.status(200).json({
+      message: "Comunicazione inviata correttamente e messaggio inviato",
+})
+
         let queryComunicazioneGmail = await db.query(
       "SELECT email, username FROM dati_accesso"
     );
@@ -164,13 +168,9 @@ Router.post("/sendCommunication", async (req, res) => {
         };
 
         return sendMailAsync(workerMailComunicazioniOptions);
-      });
+});
 
     await Promise.all(emailPromises);
-
-    res.status(200).json({
-      message: "Comunicazione inviata correttamente e messaggio inviato",
-    })
     console.log(query.rows);
   } catch (err) {
     res.status(500).json({ message: "Internal server error", err });
