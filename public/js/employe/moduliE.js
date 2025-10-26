@@ -95,8 +95,7 @@ async function invioDatiTrasporto() {
     !condizioneTrasporto ||
     !integritaConfezioni ||
     !etichetta ||
-    !vInfestanti ||
-    !temperaturaConsegna
+    !vInfestanti
   ) {
     let errore = document.getElementById("errore-trasporto");
     return mostraErrore(errore, "Compilare tutti i campi");

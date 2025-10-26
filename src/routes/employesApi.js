@@ -958,8 +958,7 @@ Router.post("/invioDatiTrasporto", async (req, res) => {
     !cTrasporto ||
     !iConfezioni ||
     !etichettatura ||
-    !infestanti ||
-    temperatura === undefined
+    !infestanti
   ) {
     return res.status(400).json({ message: "Compilare tutti i campi" });
   }
