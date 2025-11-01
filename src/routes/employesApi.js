@@ -314,7 +314,7 @@ Router.get("/visioneTurni", async (req, res) => {
   try {
     //I made a query where i select the id, the day, the start and the finish time of work where the lavoratore_id is associted with the user_id
     let query = await db.query(
-      "SELECT id, giorno, ora_inizio, ora_fine FROM turni WHERE lavoratore_id = $1  AND EXTRACT(YEAR FROM giorno) = $2",
+      "SELECT id, giorno, ora_inizio, ora_fine FROM turni WHERE lavoratore_id = $1  AND EXTRACT(YEAR FROM giorno) = $2 ORDER BY giorno",
       [id, annoCorrente]
     );
 
