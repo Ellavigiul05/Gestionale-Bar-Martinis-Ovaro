@@ -413,7 +413,7 @@ Router.get("/guardaTurni", async (req, res) => {
   try {
     //I made a query where i select the rows of turni where there are the userid hours of this year
     let query = await db.query(
-      "SELECT * FROM turni WHERE lavoratore_id = $1 AND EXTRACT(YEAR FROM giorno) = $2",
+      "SELECT * FROM turni WHERE lavoratore_id = $1 AND EXTRACT(YEAR FROM giorno) = $2 ORDER BY giorno",
       [idLavoratore, annoCorrente]
     );
 
