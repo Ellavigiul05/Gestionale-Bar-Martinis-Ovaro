@@ -974,7 +974,7 @@ Router.post("/invioDatiTrasporto", async (req, res) => {
         iConfezioni,
         etichettatura,
         infestanti,
-        temperatura,
+        temperatura || null,
         id,
       ]
     );
@@ -1257,7 +1257,7 @@ Router.get("/excelTemperatureE", async (req, res) => {
 
   sheetTemperature.columns = [
     { header: "Giorno", key: "giorno", width: 15 },
-    { header: "Parte Giornata", key: "parte_giornata", width: 20 },
+    { header: "ParteGiornata", key: "parte_giornata", width: 20 },
     { header: "Frigo1", key: "n1", width: 20 },
     { header: "Frigo2", key: "n2", width: 20 },
     { header: "Frigo3", key: "n3", width: 20 },
@@ -1303,6 +1303,7 @@ Router.get("/excelTemperatureE", async (req, res) => {
   query.rows.forEach((temperatura) => {
     let row = sheetTemperature.addRow({
       giorno: temperatura.giorno,
+      parte_giornata: temperatura.parte_giornata,
       n1: temperatura.n1,
       n2: temperatura.n2,
       n3: temperatura.n3,
