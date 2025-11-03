@@ -1025,19 +1025,25 @@ Router.post("/invioDatiTemperature", async (req, res) => {
     }
   }
 
+  function parseNumero(val) {
+    if (val === null || val === "" || val === undefined) return null;
+    const num = parseFloat(String(val).replace(",", "."));
+    return isNaN(num) ? null : num;
+  }
+
   try {
     let query = await db.query(
       "INSERT INTO temperature(giorno, parte_giornata, n1, n2, n3, bar, gelati, vini, bibite, lavoratore_id) VALUES($1, $2, $3, $4, $5, $6, $7, $8, $9, $10) RETURNING *",
       [
         giorno,
         parteGiornata,
-        frigo1,
-        frigo2,
-        frigo3,
-        bar,
-        gelati,
-        vini,
-        bibite,
+        parseNumero(frigo1),
+        parseNumero(frigo2),
+        parseNumero(frigo3),
+        parseNumero(bar),
+        parseNumero(gelati),
+        parseNumero(vini),
+        parseNumero(bibite),
         id,
       ]
     );
