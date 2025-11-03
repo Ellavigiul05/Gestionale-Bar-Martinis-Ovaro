@@ -2,7 +2,7 @@ import express from "express";
 
 import exceljs from "exceljs";
 
-import pool from "../config/db.js"; 
+import pool from "../config/db.js";
 
 import { differenzaOre } from "./function.js";
 
@@ -116,9 +116,9 @@ Router.post("/sendCommunication", async (req, res) => {
 
     res.status(200).json({
       message: "Comunicazione inviata correttamente e messaggio inviato",
-})
+    });
 
-        let queryComunicazioneGmail = await db.query(
+    let queryComunicazioneGmail = await db.query(
       "SELECT email, username FROM dati_accesso"
     );
 
@@ -168,7 +168,7 @@ Router.post("/sendCommunication", async (req, res) => {
         };
 
         return sendMailAsync(workerMailComunicazioniOptions);
-});
+      });
 
     await Promise.all(emailPromises);
     console.log(query.rows);
@@ -1020,7 +1020,7 @@ Router.post("/invioDatiTemperature", async (req, res) => {
   ];
 
   for (let i = 0; i < input.length; i++) {
-    if (!input[i]) {
+    if (input[i] === undefined || input[i] === null || input[i] === "") {
       return res.status(400).json({ message: "Compilare tutti i campi" });
     }
   }

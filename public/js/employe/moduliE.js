@@ -147,37 +147,49 @@ async function invioDatiTemperature(e) {
   let frigoVini = document.getElementById("vini").value;
   let frigoBibite = document.getElementById("bibite").value;
 
-  let valori = [giornoValue, controlloValue, frigo1Value, frigo2Value, frigo3Value, frigoBar, frigoGelati, frigoVini, frigoBibite];
+  let valori = [
+    giornoValue,
+    controlloValue,
+    frigo1Value,
+    frigo2Value,
+    frigo3Value,
+    frigoBar,
+    frigoGelati,
+    frigoVini,
+    frigoBibite,
+  ];
 
-  for(let i = 0; i < valori.length; i++) {
-    if(!valori[i]) {
+  for (let i = 0; i < valori.length; i++) {
+    if (!valori[i]) {
       let errore = document.getElementById("errore-temperature");
       return mostraErrore(errore, "Compilare i campi");
     }
   }
 
+  function normalizzaNumero(val) {
+    if (val === "" || val === null || val === undefined) return "";
+    return Number(val.replace(",", "."));
+  }
+
   const dati = {
     giorno: giornoValue,
     parteGiornata: controlloValue,
-    frigo1: frigo1Value,
-    frigo2: frigo2Value,
-    frigo3: frigo3Value,
-    bar: frigoBar,
-    gelati: frigoGelati, 
-    vini: frigoVini, 
-    bibite: frigoBibite,
+    frigo1: normalizzaNumero(frigo1Value),
+    frigo2: normalizzaNumero(frigo2Value),
+    frigo3: normalizzaNumero(frigo3Value),
+    bar: normalizzaNumero(frigoBar),
+    gelati: normalizzaNumero(frigoGelati),
+    vini: normalizzaNumero(frigoVini),
+    bibite: normalizzaNumero(frigoBibite),
   };
 
   try {
-    let response = await fetch(
-      `/api/invioDatiTemperature`,
-      {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify(dati),
-        credentials: "include",
-      }
-    );
+    let response = await fetch(`/api/invioDatiTemperature`, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify(dati),
+      credentials: "include",
+    });
 
     if (response.ok) {
       window.location.href = "/moduliE";
@@ -190,8 +202,6 @@ async function invioDatiTemperature(e) {
 document
   .getElementById("btn-temperature")
   .addEventListener("click", invioDatiTemperature);
-
-
 
 document.getElementById("ex-trasporti-btn").addEventListener("click", (e) => {
   e.preventDefault();
@@ -218,14 +228,12 @@ document.getElementById("ex-trasporti-btn").addEventListener("click", (e) => {
     return mostraErrore(errore, "Selezionare un mese");
   }
 
-  window.location.href = `/api/excelTrasportiE?mese=${meseNum}`; 
+  window.location.href = `/api/excelTrasportiE?mese=${meseNum}`;
 });
 
-
-
-document.getElementById("ex-igiene-btn").addEventListener("click", (e)=>{
+document.getElementById("ex-igiene-btn").addEventListener("click", (e) => {
   e.preventDefault();
-    const mesi = {
+  const mesi = {
     gennaio: 1,
     febbraio: 2,
     marzo: 3,
@@ -248,13 +256,12 @@ document.getElementById("ex-igiene-btn").addEventListener("click", (e)=>{
     return mostraErrore(errore, "Selezionare un mese");
   }
 
-  window.location.href = `/api/excelIgieneE?mese=${meseNum}`; 
+  window.location.href = `/api/excelIgieneE?mese=${meseNum}`;
 });
 
-
-  document.getElementById("ex-temperature-btn").addEventListener("click", (e)=>{
-    e.preventDefault();
-    const mesi = {
+document.getElementById("ex-temperature-btn").addEventListener("click", (e) => {
+  e.preventDefault();
+  const mesi = {
     gennaio: 1,
     febbraio: 2,
     marzo: 3,
@@ -269,7 +276,9 @@ document.getElementById("ex-igiene-btn").addEventListener("click", (e)=>{
     dicembre: 12,
   };
 
-  let mesePreso = document.getElementById("mese-temperature").value.toLowerCase();
+  let mesePreso = document
+    .getElementById("mese-temperature")
+    .value.toLowerCase();
   let meseNum = mesi[mesePreso];
 
   if (!mesePreso) {
@@ -277,5 +286,5 @@ document.getElementById("ex-igiene-btn").addEventListener("click", (e)=>{
     return mostraErrore(errore, "Selezionare un mese");
   }
 
-  window.location.href = `/api/excelTemperatureE?mese=${meseNum}`; 
+  window.location.href = `/api/excelTemperatureE?mese=${meseNum}`;
 });
