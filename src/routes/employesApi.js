@@ -1028,7 +1028,7 @@ Router.post("/invioDatiTemperature", async (req, res) => {
   function parseNumero(val) {
     if (val === null || val === "" || val === undefined) return null;
     const num = parseFloat(String(val).replace(",", "."));
-    return isNaN(num) ? null : num;
+    return isNaN(num) ? null : Math.round(num); // <-- arrotonda
   }
 
   try {
@@ -1052,8 +1052,10 @@ Router.post("/invioDatiTemperature", async (req, res) => {
   } catch (err) {
     res
       .status(500)
-      .json({     message: "Errore durante l'inserimento",
-       errore: err.message || null, });
+      .json({
+        message: "Errore durante l'inserimento",
+        errore: err.message || null,
+      });
     console.log("Problemi nell'inserimento delle temperature", err);
   }
 });
