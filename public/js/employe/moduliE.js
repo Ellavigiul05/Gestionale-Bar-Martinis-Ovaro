@@ -166,21 +166,19 @@ async function invioDatiTemperature(e) {
     }
   }
 
-  function normalizzaNumero(val) {
-    if (val === "" || val === null || val === undefined) return "";
-    return Number(val.replace(",", "."));
-  }
+  const normalizza = (val) =>
+    val === "" ? null : parseFloat(String(val).replace(",", "."));
 
   const dati = {
     giorno: giornoValue,
     parteGiornata: controlloValue,
-    frigo1: normalizzaNumero(frigo1Value),
-    frigo2: normalizzaNumero(frigo2Value),
-    frigo3: normalizzaNumero(frigo3Value),
-    bar: normalizzaNumero(frigoBar),
-    gelati: normalizzaNumero(frigoGelati),
-    vini: normalizzaNumero(frigoVini),
-    bibite: normalizzaNumero(frigoBibite),
+    frigo1: normalizza(frigo1Value),
+    frigo2: normalizza(frigo2Value),
+    frigo3: normalizza(frigo3Value),
+    bar: normalizza(frigoBar),
+    gelati: normalizza(frigoGelati),
+    vini: normalizza(frigoVini),
+    bibite: normalizza(frigoBibite),
   };
 
   try {
