@@ -1052,7 +1052,8 @@ Router.post("/invioDatiTemperature", async (req, res) => {
   } catch (err) {
     res
       .status(500)
-      .json({ message: "Problemi nell'inserimento delle temperature", err });
+      .json({     message: "Errore durante l'inserimento",
+       errore: err.message || null, });
     console.log("Problemi nell'inserimento delle temperature", err);
   }
 });

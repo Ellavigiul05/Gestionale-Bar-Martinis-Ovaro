@@ -193,7 +193,8 @@ async function invioDatiTemperature(e) {
       window.location.href = "/moduliE";
     }
   } catch (err) {
-    console.log("Errore nell'inserimento delle temperature");
+    let text = await response.text();
+    console.log("Risposta server:", text);
   }
 }
 
