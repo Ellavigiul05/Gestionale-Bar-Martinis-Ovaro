@@ -482,8 +482,10 @@ Router.get("/fileemploye", async (req, res) => {
       idLavoratore,
     ]);
 
+    const turniLavoratore = new exceljs.Workbook();
+
     //I create a new sheet called "turni"
-    const sheet = workbook.addWorksheet("Turni");
+    const sheet = turniLavoratore.addWorksheet("Turni");
 
     //I create the headers of the table
     sheet.columns = [
@@ -556,7 +558,7 @@ Router.get("/fileemploye", async (req, res) => {
     );
     res.setHeader("Content-Disposition", "attachment; filename=turni.xlsx");
 
-    await workbook.xlsx.write(res);
+    await turniLavoratore.xlsx.write(res);
     res.end();
   } catch (err) {
     console.log(err);
