@@ -1294,7 +1294,7 @@ Router.get("/excelTrasporti", async (req, res) => {
   }
 
   const meseNum = parseInt(mese, 10);
-  const anno = 2025;
+  const anno = new Date().getFullYear();
 
   const workBookTrasporti = new exceljs.Workbook();
   const sheetTrasporti = workBookTrasporti.addWorksheet(
@@ -1393,7 +1393,7 @@ Router.get("/excelIgiene", async (req, res) => {
   }
 
   const meseNum = parseInt(mese, 10);
-  const anno = 2025;
+  const anno = new Date().getFullYear();
 
   const workBookIgiene = new exceljs.Workbook();
   const sheetIgiene = workBookIgiene.addWorksheet("Scheda controlli igiene");
@@ -1483,7 +1483,7 @@ Router.get("/excelTemperature", async (req, res) => {
   }
 
   const meseNum = parseInt(mese, 10);
-  const anno = 2025;
+  const anno = new Date().getFullYear();
 
   const workBookTemperature = new exceljs.Workbook();
   const sheetTemperature = workBookTemperature.addWorksheet(
