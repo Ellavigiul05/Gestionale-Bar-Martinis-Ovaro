@@ -26,15 +26,17 @@
             <tr>
                 <th>Giorno</th>
                 <th id="turno-1">6:00-14:00</th>
-                <th id="turno-2">14:00-chisura</th>
-                <th id="turno-3">/</th>
-                <th id="turno-4">/</th>
+                <th id="turno-2">6:00-14:00</th>
+                <th id="turno-3">14:00-chiusura</th>
+                <th id="turno-4">17:00-chisura</th>
             </tr>
         </thead>
 
         <tbody id="body-orario"></tbody>
     </table>
     </div>
+
+    <button id="btn-excel">Scarica Turni del mese selezionato in Excel</button>
 </main>
     <script>
       const apiURL = "<%= apiURL %>";

@@ -45,3 +45,11 @@ async function VedereTabella(mese) {
     console.log("Errore: ", err);
   }
 }
+
+
+const btnExcel = document.getElementById("btn-excel");
+
+btnExcel.addEventListener("click", ()=>{
+  const mese = document.getElementById("mese").value;
+  window.location.href = `/api/excelTurniBar?mese=${mese}`
+})

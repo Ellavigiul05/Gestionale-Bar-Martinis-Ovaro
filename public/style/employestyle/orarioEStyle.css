@@ -75,6 +75,16 @@ td {
   text-align: center;
 }
 
+#btn-excel {
+  width: 40%;
+  height: auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 4vh;
+  background-color: green;
+}
+
 tbody tr:nth-child(even) {
   background-color: #f2f0ea;
 }

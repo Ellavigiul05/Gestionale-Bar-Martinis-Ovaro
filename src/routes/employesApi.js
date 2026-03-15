@@ -606,6 +606,119 @@ Router.get("/ottieniOrari", async (req, res) => {
   }
 });
 
+Router.get("/excelTurniBar", async (req, res) => {
+  const { mese } = req.query;
+  const year = new Date().getFullYear();
+  const currentMonth = new Date().getMonth() + 1;
+
+  try {
+    let query;
+    // Uso la tua logica di selezione basata sul mese
+    if (mese) {
+      if (currentMonth === 12 && mese.toLowerCase() === "gennaio") {
+        query = await db.query(
+          "SELECT * FROM orario WHERE LOWER(giorno) LIKE $1 AND LOWER(giorno) LIKE $2 ORDER BY id ASC",
+          [`%${mese.toLowerCase()}%`, `%${year + 1}%`]
+        );
+      } else {
+        query = await db.query(
+          "SELECT * FROM orario WHERE LOWER(giorno) LIKE $1 AND LOWER(giorno) LIKE $2 ORDER BY id ASC",
+          [`%${mese.toLowerCase()}%`, `%${year}%`]
+        );
+      }
+    } else {
+      query = await db.query("SELECT * FROM orario ORDER BY id ASC");
+    }
+
+    const workbookTurni = new exceljs.Workbook();
+    const sheetTurni = workbookTurni.addWorksheet("Turni Bar");
+
+    // Definizione colonne con gli orari specifici che mi hai dato
+    sheetTurni.columns = [
+      { header: "Giorno", key: "giorno", width: 25 },
+      { header: "Mattina (06:00 - 14:00)", key: "turno_1", width: 20 },
+      { header: "Intermedio (06:00 - 14:00)", key: "turno_2", width: 20 },
+      { header: "Pomeriggio (14:00 - Chiusura)", key: "turno_3", width: 25 },
+      { header: "Sera (17:00 - Chiusura)", key: "turno_4", width: 25 },
+    ];
+
+    // Titolo principale
+    const titleText = mese ? `Programmazione Turni Bar - ${mese.toUpperCase()} ${year}` : "Programmazione Turni Bar";
+    const titleRow = sheetTurni.insertRow(1, [titleText]);
+    titleRow.font = { size: 16, bold: true, color: { argb: "B17457" } };
+    titleRow.alignment = { horizontal: "center", vertical: "middle" };
+    sheetTurni.mergeCells(1, 1, 1, 5);
+
+    sheetTurni.insertRow(2, []); // Spazio
+
+    // Stilizzazione Header (Riga 3)
+    const headerRow = sheetTurni.getRow(3);
+    headerRow.eachCell((cell) => {
+      cell.font = { bold: true, color: { argb: "FFFFFF" }, size: 11 };
+      cell.alignment = { horizontal: "center", vertical: "middle", wrapText: true };
+      cell.fill = {
+        type: "pattern",
+        pattern: "solid",
+        fgColor: { argb: "B17457" },
+      };
+      cell.border = {
+        top: { style: "thin" },
+        left: { style: "thin" },
+        bottom: { style: "thin" },
+        right: { style: "thin" },
+      };
+    });
+
+    // Inserimento righe dal DB
+    query.rows.forEach((rowDB) => {
+      const row = sheetTurni.addRow({
+        giorno: rowDB.giorno,
+        turno_1: rowDB.turno_1 || "-",
+        turno_2: rowDB.turno_2 || "-",
+        turno_3: rowDB.turno_3 || "-",
+        turno_4: rowDB.turno_4 || "-",
+      });
+
+      // Stile colonna Giorno
+      const cellGiorno = row.getCell(1);
+      cellGiorno.fill = {
+        type: "pattern",
+        pattern: "solid",
+        fgColor: { argb: "FAF7F0" },
+      };
+      cellGiorno.font = { bold: true, color: { argb: "B17457" } };
+
+      // Bordi per tutte le celle della riga
+      row.eachCell((cell) => {
+        cell.alignment = { horizontal: "center", vertical: "middle" };
+        cell.border = {
+          top: { style: "thin" },
+          left: { style: "thin" },
+          bottom: { style: "thin" },
+          right: { style: "thin" },
+        };
+      });
+    });
+
+    // Risposta per il download
+    res.setHeader(
+      "Content-Type",
+      "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet"
+    );
+    res.setHeader(
+      "Content-Disposition",
+      `attachment; filename=Turni_Bar_${mese || 'Totale'}.xlsx`
+    );
+
+    await workbookTurni.xlsx.write(res);
+    res.end();
+
+  } catch (err) {
+    console.error("Errore export turni:", err);
+    res.status(500).json({ message: "Errore interno nel generare l'excel", err });
+  }
+});
+
 //I made a route to send the holiday's requests
 Router.post("/invioDateFerie", async (req, res) => {
   //I take the start day and the end day
